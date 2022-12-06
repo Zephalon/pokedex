@@ -3,8 +3,8 @@ import json
 from bs4 import BeautifulSoup
 
 TARGET = 'https://www.pokewiki.de'
-SCRAPE_ICONS = True
-SCRAPE_ARTWORK = True
+SCRAPE_ICONS = False
+SCRAPE_ARTWORK = False
 
 pokemon_list = []
 
@@ -16,16 +16,14 @@ pokemon = soup.find_all('tr')
 # scrape pokemon list
 for mid, monster in enumerate(pokemon):
     fields = monster.find_all('td')
-    pokemon_data = {}
+    pokemon_data = {
+        'id': mid
+    }
 
     if (len(fields) == 0):
         continue
 
     for fid, field in enumerate(fields):
-        # ID
-        if (fid == 0):
-            pokemon_data['id'] = int(field.text)
-
         # ICON
         if (fid == 1):
             if (SCRAPE_ICONS):
@@ -39,11 +37,11 @@ for mid, monster in enumerate(pokemon):
             pokemon_data['name'] = field.text
             pokemon_data['original_url'] =  field.find('a').attrs['href']
 
-        # TYP
+        # TYPES
         if (fid == 8):
-            pokemon_data['type'] = []
-            for types in field.find('a'):
-                pokemon_data['type'].append(types.attrs['title'])
+            pokemon_data['types'] = []
+            for types in field.find_all('a'):
+                pokemon_data['types'].append(types.attrs['title'])
 
     pokemon_list.append(pokemon_data)
 
@@ -54,6 +52,8 @@ print('=== Found ' + str(len(pokemon_list)) + ' Pokemon ===')
 
 # scrape pokemon data
 for mid, monster in enumerate(pokemon_list):
+    print('Scraping Pokemon #' + str(monster['id']))
+
     page = requests.get(TARGET + monster['original_url'])
     soup = BeautifulSoup(page.content, 'html.parser')
 

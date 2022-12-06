@@ -7,14 +7,20 @@ class PokemonListItem extends Component {
     }
 
     render() {
-        let { id, name } = this.props;
+        let { id, name, types } = this.props;
 
         return (
             <li className="pokemon_list_item">
                 <div className="icon"><img src={'pokemon_icons/' + id + '.png'} /></div>
-                <div className="name">{name}</div> 
+                <div className="title">
+                    <div className="name">{name}</div>
+                    <div className="types">
+                        {types.map((type) =>
+                            <span key={id + '-' + type} title={type}>{type}</span>
+                        )}
+                    </div>
+                </div>
                 <div className="id">#{id}</div>
-                <div className="types"></div>
             </li>
         )
     }
