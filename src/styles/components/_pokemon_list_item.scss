@@ -1,0 +1,10 @@
+@use '../settings';
+
+.pokemon_list_item {
+    color: #fff;
+    display: flex;
+    padding: 1em 0;
+    height: 5em;
+    flex-wrap: nowrap;
+    align-items: center;
+}
