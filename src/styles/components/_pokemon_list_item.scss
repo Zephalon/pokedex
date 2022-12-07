@@ -7,9 +7,30 @@
     height: 5em;
     flex-wrap: nowrap;
     align-items: center;
+    border-bottom: 0.5em solid settings.$color-light;
+    border-radius: 0.25em;
+    margin-bottom: 1em;
+    transition: all 0.25s ease-in-out;
+
+    &:hover {
+        border-bottom-color: settings.$color-active;
+        transform: translateY(-0.25em);
+    }
+
+    @each $color-key-1, $color-value-1 in settings.$type_colors {
+        &.type-#{$color-key-1} {
+            background: linear-gradient(135deg, darken($color-value-1, 10%) 0%, darken($color-value-1, 20%) 100%);
+        }
+
+        @each $color-key-2, $color-value-2 in settings.$type_colors {
+            &.type-#{$color-key-1}-#{$color-key-2} {
+                background: linear-gradient(135deg, darken($color-value-1, 10%) 0%, darken($color-value-2, 10%) 100%);
+            }
+        }
+    }
 
     .icon {
-        width: 10em;
+        width: 5em;
         text-align: center;
     }
 
@@ -19,28 +40,39 @@
         .name {
             font-size: 2em;
             font-weight: bold;
+            text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.5);
         }
 
         .types span {
-            padding: 0.1em 0.5em;
-            margin-right: 1em;
+            padding: 0.15em 0.5em 0.13em 0.5em;
+            margin-right: 0.5em;
             display: block;
             float: left;
             border-radius: 0.25em;
             color: #fff;
-            font-weight: bold;
             background-color: #333;
             text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.5);
+            text-transform: uppercase;
+            font-family: settings.$font-family-pixelated;
+            line-height: 1;
 
             @each $color-key, $color-value in settings.$type_colors {
                 &[title="#{$color-key}"] {
                     background-color: #{$color-value};
                 }
             }
-
-            &[title="Pflanze2"] {
-                background-color: #62bc5a;
-            }
         }
+    }
+
+    .mid {
+        padding: 0.15em 0.5em 0.13em 0.5em;
+        display: block;
+        border-radius: 0.25em;
+        color: #fff;
+        background-color: #333;
+        text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.5);
+        // font-family: settings.$font-family-pixelated;
+        line-height: 1;
+        font-size: 0.8em;
     }
 }

@@ -12,6 +12,7 @@ class PokemonList extends Component {
 
         return (
             <ul id="pokemon_list">
+                
                 {pokemon.map((monster) =>
                     <PokemonListItem key={monster.id} id={monster.id} name={monster.name} types={monster.types} />
                 )}

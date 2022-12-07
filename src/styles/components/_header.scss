@@ -1,0 +1,20 @@
+@use '../settings';
+
+#header {
+    width: 100%;
+    background-color: settings.$color-dark;
+    display: flex;
+    padding: 0.5em 0;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: center;
+
+    #title {
+        color: settings.$color-light;
+        font-size: 3em;
+        font-family: settings.$font-family-pixelated;
+        font-weight: bold;
+        text-transform: uppercase;
+        margin-left: 0.35em;
+    }
+}

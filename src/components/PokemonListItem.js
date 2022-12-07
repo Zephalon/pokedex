@@ -10,7 +10,7 @@ class PokemonListItem extends Component {
         let { id, name, types } = this.props;
 
         return (
-            <li className="pokemon_list_item">
+            <li className={'pokemon_list_item type-' + types.join('-')}>
                 <div className="icon"><img src={'pokemon_icons/' + id + '.png'} /></div>
                 <div className="title">
                     <div className="name">{name}</div>
@@ -20,7 +20,7 @@ class PokemonListItem extends Component {
                         )}
                     </div>
                 </div>
-                <div className="id">#{id}</div>
+                <div className="mid">{'#' + id}</div>
             </li>
         )
     }

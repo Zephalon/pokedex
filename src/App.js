@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
 import './App.scss';
+import Header from "./components/Header";
 import Pokedex from "./components/Pokedex";
 
 class App extends Component {
@@ -12,7 +13,7 @@ class App extends Component {
   render() {
     return (
       <div className="app" key={this.props.id}>
-        <header className="app-header"></header>
+        <Header />
         <Pokedex />
       </div>
     );
