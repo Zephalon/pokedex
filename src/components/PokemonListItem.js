@@ -22,7 +22,7 @@ class PokemonListItem extends Component {
         let { open } = this.state;
 
         return (
-            <li className={'pokemon_list_item type-' + types.join('-') + ' ' + open} onClick={this.switch.bind(this)}>
+            <li className={'pokemon_list_item type-' + types.join('-') + ' ' + (open ? 'open' : 'closed')} onClick={this.switch.bind(this)}>
                 <div className="meta">
                     <div className="icon"><img src={'pokemon_icons/' + id + '.png'} alt={'Icon ' + name} loading="lazy" /></div>
                     <div className="title">
@@ -36,6 +36,7 @@ class PokemonListItem extends Component {
                     <div className="mid">{'#' + id}</div>
                 </div>
                 { open ? <PokemonListDetails id={id} name={name} /> : '' }
+                <div className="pattern"></div>
             </li>
         )
     }

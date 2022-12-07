@@ -14,10 +14,12 @@ soup = BeautifulSoup(page.content, 'html.parser')
 pokemon = soup.find_all('tr')
 
 # scrape pokemon list
+monster_id = 1
+
 for mid, monster in enumerate(pokemon):
     fields = monster.find_all('td')
     pokemon_data = {
-        'id': mid
+        'id': monster_id
     }
 
     if (len(fields) == 0):
@@ -30,7 +32,7 @@ for mid, monster in enumerate(pokemon):
                 icon_url = field.find('img').attrs['src']
                 print('Saving Icon: ' + icon_url)
                 response = requests.get(TARGET + '/' + icon_url)
-                open('../public/pokemon_icons/' + str(monster['id']) + '.png', 'wb').write(response.content)
+                open('../public/pokemon_icons/' + str(monster_id) + '.png', 'wb').write(response.content)
 
         # NAME
         if (fid == 2):
@@ -44,6 +46,7 @@ for mid, monster in enumerate(pokemon):
                 pokemon_data['types'].append(types.attrs['title'])
 
     pokemon_list.append(pokemon_data)
+    monster_id += 1
 
 with open('../src/pokemon.json', 'w') as f:
     json.dump(pokemon_list, f)
