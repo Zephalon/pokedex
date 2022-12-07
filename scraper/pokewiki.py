@@ -3,8 +3,8 @@ import json
 from bs4 import BeautifulSoup
 
 TARGET = 'https://www.pokewiki.de'
-SCRAPE_ICONS = False
-SCRAPE_ARTWORK = False
+SCRAPE_ICONS = True
+SCRAPE_ARTWORK = True
 
 pokemon_list = []
 

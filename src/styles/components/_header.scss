@@ -9,6 +9,10 @@
     align-items: center;
     justify-content: center;
 
+    img {
+        height: 2em;
+    }
+
     #title {
         color: settings.$color-light;
         font-size: 3em;
