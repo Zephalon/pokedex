@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import pokemon_list from "../pokemon.json";
+import pokemon_list from "../species.json";
 import PokemonList from "./PokemonList";
 
 class Pokedex extends Component {

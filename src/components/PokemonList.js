@@ -14,7 +14,7 @@ class PokemonList extends Component {
             <ul id="pokemon_list">
                 
                 {pokemon.map((monster) =>
-                    <PokemonListItem key={monster.id} id={monster.id} name={monster.name} types={monster.types} />
+                    <PokemonListItem key={monster.id} id={monster.id} slug={monster.slug} name={monster.name} types={monster.types} default_pokemon={monster.pokemon} />
                 )}
             </ul>
         )
