@@ -67,7 +67,7 @@ class Evolutions extends Component {
         if (this.evolutions.length > 1) return (
             <div className="evolutions">
                 {this.evolutions.map((evolution) =>
-                    <EvolutionItem evolution={evolution} />
+                    <EvolutionItem key={evolution.species.name} evolution={evolution} />
                 )}
             </div>
         )

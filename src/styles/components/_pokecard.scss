@@ -1,0 +1,35 @@
+@use '../settings';
+
+#pokecard-container {
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-color: rgba(0,0,0,.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#pokecard {
+    background-color: #fff;
+    width: 80vw;
+    max-width: 600px;
+    height: 160vw;
+    max-height: 800px;
+    border-radius: 0.75em;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+
+    .top {
+        height: 50%;
+    }
+
+    .bottom {
+        height: 50%;
+        background-color: settings.$color-light;
+    }
+}

@@ -15,20 +15,6 @@
         transform: translateY(-0.25em);
     }
 
-    @each $color-key-1,
-    $color-value-1 in settings.$type_colors {
-        &.type-#{$color-key-1} {
-            background: repeating-linear-gradient(45deg, rgba(#333, 10%) 0, rgba(#333, 10%) 1px, rgba(#e5e5f7, 0%) 0, rgba(#e5e5f7, 0%) 50%), linear-gradient(135deg, darken($color-value-1, 10%) 0%, darken($color-value-1, 20%) 100%);
-        }
-
-        @each $color-key-2,
-        $color-value-2 in settings.$type_colors {
-            &.type-#{$color-key-1}-#{$color-key-2} {
-                background: repeating-linear-gradient(45deg, rgba(#333, 10%) 0, rgba(#333, 10%) 1px, rgba(#e5e5f7, 0%) 0, rgba(#e5e5f7, 0%) 50%), linear-gradient(135deg, darken($color-value-1, 10%) 0%, darken($color-value-2, 10%) 100%);
-            }
-        }
-    }
-
     .icon {
         width: 8em;
         text-align: center;
