@@ -1,0 +1,23 @@
+@use '../settings';
+
+.evolutions {
+    display: flex;
+    justify-content: center;
+    margin: 1em -1em;
+    padding: 1em;
+    background-color: rgba(0,0,0,.5);
+
+    .evolution {
+        margin: 0;
+        padding: 0 0.5em;
+
+        .icon {
+
+        }
+
+        .name {
+            text-align: center;
+            color: settings.$color-light;
+        }
+    }
+}
