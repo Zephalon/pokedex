@@ -1,0 +1,32 @@
+@use '../settings';
+
+.pokemon-title {
+    color: settings.$color-light;
+
+    .name {
+        font-size: 2em;
+        font-weight: bold;
+        text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.5);
+        margin-bottom: 0.05em;
+    }
+
+    .types span {
+        padding: 0.15em 0.5em 0.2em 0.5em;
+        margin-right: 0.5em;
+        display: block;
+        float: left;
+        border-radius: 0.25em;
+        background-color: settings.$color-dark;
+        text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.5);
+        text-transform: uppercase;
+        font-family: settings.$font-family-pixelated;
+        line-height: 1;
+
+        @each $color-key,
+        $color-value in settings.$type_colors {
+            &[title="#{$color-key}"] {
+                background-color: #{$color-value};
+            }
+        }
+    }
+}

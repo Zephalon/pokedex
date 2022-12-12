@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import type_lookup from "../type_lookup.json";
+import PokemonTitle from "./PokemonTitle";
 
 class PokemonListItem extends Component {
     constructor(props) {
@@ -13,20 +13,12 @@ class PokemonListItem extends Component {
 
     render() {
         let { id, name, slug, types } = this.props;
-        let { open } = this.state;
 
         return (
             <li className={'pokemon_list_item type-' + types.join('-')} onClick={this.open.bind(this)}>
                 <div className="meta">
                     <div className="icon"><img src={'pokemon_sprites/' + slug + '.png'} alt={'Icon ' + name} loading="lazy" /></div>
-                    <div className="title">
-                        <div className="name">{name}</div>
-                        <div className="types">
-                            {types.map((type) =>
-                                <span key={id + '-' + type} title={type}>{type_lookup[type]}</span>
-                            )}
-                        </div>
-                    </div>
+                    <PokemonTitle id={id} name={name} types={types} />
                     <div className="mid">{'#' + id}</div>
                 </div>
                 <div className="pattern"></div>

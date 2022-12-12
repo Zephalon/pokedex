@@ -18,7 +18,7 @@ for fid, pokemon in enumerate(pokemon_list):
         sprite_default = requests.get(pokemon_data['sprites']['front_default'])
         open('../public/pokemon_sprites/' + pokemon_data['name'] + '.png', 'wb').write(sprite_default.content)
     except:
-        print('Could not save sprite.')
+        print('Could not save pokemon sprite.')
 
     # also save species if this is the default pokemon
     if (pokemon_data['is_default']):
@@ -32,6 +32,13 @@ for fid, pokemon in enumerate(pokemon_list):
                 json.dump(evolution_data, f)
         except:
             print('Could not save evolution chain.')
+
+        if (species_data['name'] != pokemon['name']):
+            try:
+                sprite_default = requests.get(pokemon_data['sprites']['front_default'])
+                open('../public/pokemon_sprites/' + species_data['name'] + '.png', 'wb').write(sprite_default.content)
+            except:
+                print('Could not save species sprite.')
 
         name_de = [row for row in species_data['names'] if row['language']['name'] == 'de']
         types = []

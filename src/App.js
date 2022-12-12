@@ -10,10 +10,11 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      show_card: false,
       card_id: false
     };
 
-    this.last_hash = '';
+    this.last_hash = false;
     this.loaded = false;
   }
 
@@ -35,6 +36,7 @@ class App extends Component {
 
     this.setState((state, props) => {
       return {
+        show_card: true,
         card_id: requested_id
       };
     });
@@ -45,7 +47,7 @@ class App extends Component {
 
     this.setState((state, props) => {
       return { 
-        card_id: false
+        show_card: false
       };
     });
 
@@ -59,18 +61,13 @@ class App extends Component {
   }
 
   render() {
-    let { card_id } = this.state;
-    let overlay = [];
-
-    if (card_id) {
-      overlay.push(<Pokecard key="pokecard" id={card_id} close={this.reset.bind(this)} />);
-    }
-
+    let { show_card, card_id } = this.state;
 
     return (
       <div className="app" key={this.props.id}>
+
         <Header />
-        {overlay}
+        {card_id ? <Pokecard key="pokecard" id={card_id} display={show_card} close={this.reset.bind(this)} /> : ''}
         <Pokedex />
       </div>
     );

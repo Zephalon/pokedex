@@ -1,51 +1,82 @@
 import React, { Component } from 'react';
-import stat_lookup from "../../stat_lookup.json";
 
 class Stats extends Component {
     constructor(props) {
         super(props);
         this.state = {};
+
+        this.stat_list = [
+            {
+                title: 'Kampfpunkte',
+                id: 'hp'
+            },
+            {
+                title: 'Initiative',
+                id: 'speed'
+            },
+            {
+                title: 'Angriff',
+                id: 'attack'
+            },
+            {
+                title: 'Sp.-Angriff',
+                id: 'special-attack'
+            },
+            {
+                title: 'Verteidigung',
+                id: 'defense'
+            },
+            {
+                title: 'Sp.-Verteidigung',
+                id: 'special-defense'
+            }
+        ]
     }
 
-    loadingAnimation() {
-        return (
-            <div className="loading_animation">
-                <img src='loading.png' alt='Loading...' loading="lazy" />
-            </div>
-        );
+    getStrength() {
+        let { stats } = this.props;
+        let strength = 0;
+
+        if (stats) {
+            strength = 0;
+            stats = stats.map((entry) => {
+                strength += entry.base_stat;
+                return entry;
+            })
+        }
+
+        return strength ? strength : '?';
     }
 
-    statList() {
+    getStatValue(key) {
         let { stats } = this.props;
 
-        let strength = 0;
-        stats = stats.map((entry) => {
-            strength += entry.base_stat;
-            return entry;
-        })
+        if (!stats) return '?';
 
-        return (
-            <ul className="stat_list">
-                <li>
-                    <span className="name stat-strength">Stärke</span>
-                    <span className="value">{strength}</span>
-                </li>
-                {stats.map((entry) =>
-                    <li key={entry.stat.name}>
-                        <span className={'name stat-' + entry.stat.name}>{stat_lookup[entry.stat.name]}</span>
-                        <span className="value">{entry.base_stat}</span>
-                    </li>
-                )}
-            </ul>
-        );
+        let entry = stats.filter(stat => stat.stat.name === key);
+
+        return entry ? entry[0].base_stat : '?';
     }
 
     render() {
-        let { stats } = this.props;
+        Object.entries(this.stat_list).forEach(entry =>
+            console.log(entry)
+        )
 
         return (
             <div className="stats">
-                {!stats ? this.loadingAnimation() : this.statList()}
+                <div className="strength">
+                    <span>{this.getStrength()}</span>
+                </div>
+                <div className="substats">
+                    {this.stat_list.map((stat) =>
+                        <div className="stat">
+                            <span className="title">{stat.title}:</span>
+                            <span className="value">{this.getStatValue(stat.id)}</span>
+                            <span className="progress" style={{ width: ((this.getStatValue(stat.id) / 100) * 75) + '%' }}></span>
+                        </div>
+                    )}
+                </div>
             </div>
         )
     }

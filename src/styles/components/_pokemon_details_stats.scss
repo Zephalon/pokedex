@@ -1,2 +1,68 @@
 @use '../settings';
 
+.stats {
+    display: flex;
+    margin: 0 1.5em 1em 1.5em;
+    flex-direction: row;
+    align-items: stretch;
+    flex-wrap: nowrap;
+
+    .strength {
+        width: 5em;
+        background-color: settings.$color-active;
+        color: settings.$color-light;
+        font-weight: bold;
+        margin-right: 1em;
+        padding: 1em;
+        border-radius: 1em;
+        display: flex;
+        align-items: center;
+
+        span {
+            font-size: 2.5em;
+            display: block;
+        }
+    }
+
+    .substats {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        line-height: 1;
+        color: #fff;
+        justify-content: space-between;
+
+        > div {
+            width: calc(50% - 2em);
+            font-size: 0.8em;
+            padding: 0.4em 0.5em 0.25em 0.5em;
+            margin: 0.25em 0;
+            //border: 0.2em solid settings.$color-dark;
+            background-color: settings.$color-dark;
+            border-radius: 1em;
+            position: relative;
+            overflow: hidden;
+
+            .title, .value {
+                z-index: 1;
+                position: relative;
+                display: inline-block;
+                font-weight: bold;
+            }
+
+            .value {
+                float: right;
+            }
+
+            .progress {
+                background-color: settings.$color-active;
+                position: absolute;
+                top: 0;
+                left: 0;
+                height: 100%;
+                z-index: 0;
+                transition: width 0.5s ease-in-out;
+            }
+        }
+    }
+}

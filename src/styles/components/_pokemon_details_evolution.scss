@@ -3,21 +3,82 @@
 .evolutions {
     display: flex;
     justify-content: center;
-    margin: 1em -1em;
+    margin: 0 -2em;
     padding: 1em;
-    background-color: rgba(0,0,0,.5);
+    background-color: settings.$color-dark;
+    overflow-x: hidden;
+    overflow-y: auto;
 
     .evolution {
         margin: 0;
         padding: 0 0.5em;
+        position: relative;
+        margin: 0 0.5em;
+        cursor: pointer;
+        transition: all 0.25s ease-in-out;
+
+        &:hover {
+            transform: translateY(-0.25em);
+        }
+
+        .trigger {
+            color: settings.$color-dark;
+            position: absolute;
+            top: 0;
+            right: 0;
+            z-index: 1;
+
+            &.no-evolution {
+                display: none;
+            }
+
+            span {
+                background-color: settings.$color-light;
+                padding: 0.15em 0.5em 0.2em 0.5em;
+                border-radius: 1em;
+                text-transform: uppercase;
+                font-family: settings.$font-family-pixelated;
+                line-height: 1;
+            }
+        }
 
         .icon {
+            position: relative;
 
+            img {
+                position: relative;
+                z-index: 1;
+            }
+
+            &-background {
+                width: 80%;
+                height: 80%;
+                position: absolute;
+                top: 10%;
+                left: 10%;
+                z-index: 0;
+                background-size: 10px 10px, 100% !important;
+                border-radius: 50%;
+            }
         }
 
         .name {
             text-align: center;
-            color: settings.$color-light;
+            color: settings.$color-dark;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+
+            span {
+                background-color: settings.$color-light;
+                padding: 0.15em 0.5em 0.2em 0.5em;
+                border-radius: 0.25em;
+                //text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.5);
+                text-transform: uppercase;
+                font-family: settings.$font-family-pixelated;
+                line-height: 1;
+            }
         }
     }
 }
