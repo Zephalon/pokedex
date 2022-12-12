@@ -24,7 +24,7 @@ class Pokecard extends Component {
         return (
             <div id="pokecard-container">
                 <div id="pokecard">
-                    <div className={'top type-' + species.types.join('-')}>
+                    <div className={'top type2-' + species.types.join('-')}>
                         <PokemonTitle id={id} name={species.name} types={species.types} />
                         <Artwork slug={species.slug} artwork_url={'pokemon_artwork/' + id + '.png'} />
                     </div>

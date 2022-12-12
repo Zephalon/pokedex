@@ -63,13 +63,13 @@
     .underlayer {
         z-index: -1;
         position: absolute;
-        left: -0.5em;
-        top: -0.5em;
-        width: calc(100% + 1em);
-        height: calc(100% + 1em);
+        left: -1em;
+        top: -1em;
+        width: calc(100% + 2em);
+        height: calc(100% + 2em);
         border-radius: 0.75em;
         box-shadow: 0 0 0.5em #000;
-        opacity: 0.5;
+        opacity: 1;
         background-size: 10px 10px, 100% !important;
     }
 }
