@@ -9,14 +9,14 @@
 
     .strength {
         width: 5em;
-        background-color: settings.$color-active;
         color: settings.$color-light;
         font-weight: bold;
-        margin-right: 1em;
         padding: 1em;
         border-radius: 1em;
         display: flex;
         align-items: center;
+        background: repeating-linear-gradient(45deg, rgba(#333, 10%) 0, rgba(#333, 10%) 1px, rgba(#e5e5f7, 0%) 0, rgba(#e5e5f7, 0%) 50%), linear-gradient(135deg, darken(settings.$color-active, 0%) 0%, darken(settings.$color-active, 5%) 100%);
+        background-size: 10px 10px, 100% !important;
 
         span {
             font-size: 2.5em;
@@ -31,8 +31,10 @@
         line-height: 1;
         color: #fff;
         justify-content: space-between;
+        margin-left: 1em;
+        width: 100%;
 
-        > div {
+        >div {
             width: calc(50% - 2em);
             font-size: 0.8em;
             padding: 0.4em 0.5em 0.25em 0.5em;
@@ -43,15 +45,30 @@
             position: relative;
             overflow: hidden;
 
-            .title, .value {
+            .text {
                 z-index: 1;
                 position: relative;
                 display: inline-block;
                 font-weight: bold;
-            }
+                width: 100%;
 
-            .value {
-                float: right;
+                .value {
+                    float: right;
+                }
+
+                .title-short {
+                    display: none;
+                }
+
+                @media (max-width: 600px) {
+                    .title {
+                        display: none;
+                    }
+
+                    .title-short {
+                        display: inline-block;
+                    }
+                }
             }
 
             .progress {
@@ -62,6 +79,8 @@
                 height: 100%;
                 z-index: 0;
                 transition: width 0.5s ease-in-out;
+                background: repeating-linear-gradient(45deg, rgba(#333, 10%) 0, rgba(#333, 10%) 1px, rgba(#e5e5f7, 0%) 0, rgba(#e5e5f7, 0%) 50%), linear-gradient(135deg, darken(settings.$color-active, 0%) 0%, darken(settings.$color-active, 5%) 100%);
+                background-size: 10px 10px, 100% !important;
             }
         }
     }

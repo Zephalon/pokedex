@@ -10,7 +10,7 @@ class Text extends Component {
         let { text } = this.props;
 
         return (
-            <div className="text">
+            <div className="details-text">
                 { !text ? 'Lade...' : text[0]['flavor_text'] }
             </div>
         )

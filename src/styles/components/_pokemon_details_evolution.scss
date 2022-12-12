@@ -1,21 +1,48 @@
 @use '../settings';
 
 .evolutions {
-    display: flex;
-    justify-content: center;
-    margin: 0 -2em;
-    padding: 1em;
+    text-align: center;
+    padding: 1em 0;
     background-color: settings.$color-dark;
-    overflow-x: hidden;
-    overflow-y: auto;
+    overflow-y: hidden;
+    overflow-x: auto;
+    height: 8.75em;
+    width: 100%;
+    box-sizing: border-box;
+    white-space: nowrap;
+
+    &::-webkit-scrollbar {
+        height: 0.5em;
+    }
+    
+    &::-webkit-scrollbar-track {
+        background-color: settings.$color-dark;
+    }
+    
+    &::-webkit-scrollbar-thumb {
+        background-color: settings.$color-light;
+    }
 
     .evolution {
+        display: inline-block;
+        height: 6.75em;
         margin: 0;
         padding: 0 0.5em;
         position: relative;
         margin: 0 0.5em;
         cursor: pointer;
         transition: all 0.25s ease-in-out;
+
+        &.active {
+            .icon-background {
+                border-color: settings.$color-active;
+            }
+
+            .name span {
+                background-color: settings.$color-active;
+                color: settings.$color-light;
+            }
+        }
 
         &:hover {
             transform: translateY(-0.25em);
@@ -59,6 +86,9 @@
                 z-index: 0;
                 background-size: 10px 10px, 100% !important;
                 border-radius: 50%;
+                box-sizing: border-box;
+                border: 0.25em solid settings.$color-dark;
+                transition: border-color 0.25s ease-in-out;
             }
         }
 
@@ -66,18 +96,19 @@
             text-align: center;
             color: settings.$color-dark;
             position: absolute;
-            bottom: 0;
+            bottom: 0.25em;
             left: 0;
             width: 100%;
 
             span {
                 background-color: settings.$color-light;
-                padding: 0.15em 0.5em 0.2em 0.5em;
+                padding: 0.2em 0.5em 0.2em 0.5em;
                 border-radius: 0.25em;
                 //text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.5);
                 text-transform: uppercase;
                 font-family: settings.$font-family-pixelated;
                 line-height: 1;
+                transition: all 0.25s ease-in-out;
             }
         }
     }

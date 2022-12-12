@@ -74,7 +74,7 @@ class PokemonDetails extends Component {
             <div className="details">
                 <Text text={flavor_text} />
                 <Stats stats={pokemon_data[slug] ? pokemon_data[slug]['stats'] : false} />
-                <Evolutions evolution_data={evolution_data[slug] ? evolution_data[slug] : false} />
+                <Evolutions active_pokemon={slug} evolution_data={evolution_data[slug] ? evolution_data[slug] : false} />
             </div>
         )
     }

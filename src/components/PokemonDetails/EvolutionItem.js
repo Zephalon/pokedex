@@ -11,7 +11,7 @@ class EvolutionItem extends Component {
     }
 
     render() {
-        let { species } = this.props;
+        let { species, active } = this.props;
         let trigger = false;
 
         if (species.evolution_details) {
@@ -31,7 +31,7 @@ class EvolutionItem extends Component {
         }
 
         return (
-            <div className="evolution" onClick={this.open.bind(this)}>
+            <div className={'evolution ' + (active ? 'active' : '')} onClick={this.open.bind(this)}>
                 <div className={'trigger ' + (trigger ? 'can-evolve' : 'no-evolution')}>
                     <span>{trigger}</span>
                 </div>

@@ -2,9 +2,8 @@
 
 .artwork {
     max-width: 100%;
-    height: calc(100% - 7em);
+    height: calc(100% - 4em);
     padding: 2em;
-    margin-top: 3em;
     overflow: hidden;
     position: relative;
     display: flex;
@@ -13,6 +12,11 @@
     justify-content: center;
     transform: scale(0.5);
     transition: all 0.5s ease-out;
+
+    @media (min-height: 861px) {
+        margin-top: 3em;
+        height: calc(100% - 7em);
+    }
 
     &.loaded {
         transform: scale(1);

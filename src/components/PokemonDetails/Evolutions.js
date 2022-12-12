@@ -25,7 +25,7 @@ class Evolutions extends Component {
     }
 
     render() {
-        let { evolution_data } = this.props;
+        let { evolution_data, active_pokemon } = this.props;
 
         if (evolution_data) {
             // flatten data
@@ -37,7 +37,7 @@ class Evolutions extends Component {
             return (
                 <div className="evolutions">
                     {this.evolutions.map((evolution) =>
-                        <EvolutionItem key={evolution.name} species={evolution} />
+                        <EvolutionItem key={evolution.name} species={evolution} active={evolution.slug === active_pokemon} />
                     )}
                 </div>
             )
