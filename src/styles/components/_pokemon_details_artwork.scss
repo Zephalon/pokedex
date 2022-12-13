@@ -2,8 +2,8 @@
 
 .artwork {
     max-width: 100%;
-    height: calc(100% - 4em);
-    padding: 2em;
+    height: calc(100% - 2.5em);
+    padding: 2em 2em 0.5em 2em;
     overflow: hidden;
     position: relative;
     display: flex;
@@ -15,7 +15,7 @@
 
     @media (min-height: 861px) {
         margin-top: 3em;
-        height: calc(100% - 7em);
+        height: calc(100% - 5.5em);
     }
 
     &.loaded {

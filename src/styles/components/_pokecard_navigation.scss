@@ -1,0 +1,16 @@
+@use '../settings';
+
+.pokecard_navigation {
+    height: 5vh;
+    width: 80vw;
+    max-width: 600px;
+    margin-top: 2em;
+    display: flex;
+    justify-content: space-between;
+
+    > div {
+        font-size: 3em;
+        color: settings.$color-light;
+        line-height: 1;
+    }
+}

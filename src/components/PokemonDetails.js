@@ -49,6 +49,8 @@ class PokemonDetails extends Component {
             })
             .then(function (data) {
                 callback(data_key, data);
+            }).catch(function() {
+                callback(data_key, []);
             });
     }
 
@@ -67,12 +69,9 @@ class PokemonDetails extends Component {
         let { species_data, pokemon_data, evolution_data } = this.state;
         let slug = species.slug;
 
-        // get flavored text
-        let flavor_text = species_data[slug] ? species_data[slug]['flavor_text_entries'].filter(text => text.language.name === 'de') : false;
-
         return (
             <div className="details">
-                <Text text={flavor_text} />
+                <Text species_data={species_data[slug] ? species_data[slug] : false} />
                 <Stats stats={pokemon_data[slug] ? pokemon_data[slug]['stats'] : false} />
                 <Evolutions active_pokemon={slug} evolution_data={evolution_data[slug] ? evolution_data[slug] : false} />
             </div>

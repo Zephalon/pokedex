@@ -66,10 +66,6 @@ class Stats extends Component {
     }
 
     render() {
-        Object.entries(this.stat_list).forEach(entry =>
-            console.log(entry)
-        )
-
         return (
             <div className="stats">
                 <div className="strength">
@@ -77,7 +73,7 @@ class Stats extends Component {
                 </div>
                 <div className="substats">
                     {this.stat_list.map((stat) =>
-                        <div className="stat">
+                        <div key={stat.id} className="stat">
                             <div className="text">
                                 <span className="title">{stat.title}:</span>
                                 <span className="title-short">{stat.title_short}:</span>

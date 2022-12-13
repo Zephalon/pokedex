@@ -12,6 +12,8 @@ class Evolutions extends Component {
     }
 
     walkEvolutionChain(chain) {
+        if (!chain) return false;
+
         let species = pokemon_list.filter(pokemon => pokemon.slug === chain.species.name);
         if (species.length) {
             species[0]['evolution_details'] = chain.evolution_details[0];
@@ -33,7 +35,7 @@ class Evolutions extends Component {
             this.walkEvolutionChain(evolution_data.chain)
         }
 
-        if (this.evolutions.length > 0) {
+        if (this.evolutions.length > 1) {
             return (
                 <div className="evolutions">
                     {this.evolutions.map((evolution) =>
@@ -41,10 +43,16 @@ class Evolutions extends Component {
                     )}
                 </div>
             )
-        } else {
+        } else if(!evolution_data) {
             return (
                 <div className="evolutions loading">
                     <img src="loading.png" alt="loading animation" loading="lazy" />
+                </div>
+            )
+        } else {
+            return (
+                <div className="evolutions unknown">
+                    <div>Keine bekannten Evolutionen.</div>
                 </div>
             )
         }

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import pokemon_list from "../species.json";
+import species_list from "../species.json";
 import PokemonList from "./PokemonList";
 
 class Pokedex extends Component {
@@ -11,7 +11,7 @@ class Pokedex extends Component {
   render() {
     return (
       <div id="pokedex" key={this.props.id}>
-        <PokemonList key="pokemon-list" pokemon={pokemon_list} />
+        <PokemonList key="pokemon-list" pokemon={species_list} />
       </div >
     );
   }

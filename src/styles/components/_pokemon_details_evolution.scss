@@ -10,6 +10,7 @@
     width: 100%;
     box-sizing: border-box;
     white-space: nowrap;
+    color: settings.$color-light;
 
     &::-webkit-scrollbar {
         height: 0.5em;
@@ -21,6 +22,19 @@
     
     &::-webkit-scrollbar-thumb {
         background-color: settings.$color-light;
+    }
+
+    &.loading, &.unknown {
+        justify-content: center;
+        display: flex;
+        align-items: center;
+
+        > .warning {
+            background-color: settings.$color-active;
+            padding: 0.2em 0.5em;
+            font-weight: bold;
+            border-radius: 0.25em;
+        }
     }
 
     .evolution {
@@ -46,6 +60,10 @@
 
         &:hover {
             transform: translateY(-0.25em);
+        }
+
+        @media (max-width: 480px) {
+           margin: 0;
         }
 
         .trigger {
@@ -99,6 +117,7 @@
             bottom: 0.25em;
             left: 0;
             width: 100%;
+            z-index: 2;
 
             span {
                 background-color: settings.$color-light;

@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import pokemon_list from "../species.json";
+import species_list from "../species.json";
 import Artwork from "./PokemonDetails/Artwork";
 import PokemonDetails from "./PokemonDetails";
 import PokemonTitle from "./PokemonTitle";
+import PokecardNavigation from "./PokecardNavigation";
 
 class Pokecard extends Component {
     constructor(props) {
@@ -11,7 +12,7 @@ class Pokecard extends Component {
     }
 
     getSpeciesById(id) {
-        let species = pokemon_list.filter(pokemon => pokemon.id === id);
+        let species = species_list.filter(pokemon => pokemon.id === id);
 
         return species.length ? species[0] : false;
     }
@@ -33,6 +34,7 @@ class Pokecard extends Component {
                     </div>
                     <div className={'underlayer type-' + species.types.join('-')}></div>
                 </div>
+                <PokecardNavigation current_species={species} close={close} />
                 <div className="curtain" onClick={close}></div>
             </div>
         );
