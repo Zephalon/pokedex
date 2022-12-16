@@ -1,42 +1,6 @@
-@use '../settings';
+@use '../../settings';
 
 .evolutions {
-    text-align: center;
-    padding: 1em 0;
-    background-color: settings.$color-dark;
-    overflow-y: hidden;
-    overflow-x: auto;
-    height: 8.75em;
-    width: 100%;
-    box-sizing: border-box;
-    white-space: nowrap;
-    color: settings.$color-light;
-
-    &::-webkit-scrollbar {
-        height: 0.5em;
-    }
-    
-    &::-webkit-scrollbar-track {
-        background-color: settings.$color-dark;
-    }
-    
-    &::-webkit-scrollbar-thumb {
-        background-color: settings.$color-light;
-    }
-
-    &.loading, &.unknown {
-        justify-content: center;
-        display: flex;
-        align-items: center;
-
-        > .warning {
-            background-color: settings.$color-active;
-            padding: 0.2em 0.5em;
-            font-weight: bold;
-            border-radius: 0.25em;
-        }
-    }
-
     .evolution {
         display: inline-block;
         height: 6.75em;

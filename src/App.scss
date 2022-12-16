@@ -6,12 +6,13 @@
 @use 'styles/components/_pokemon_list_item.scss';
 @use 'styles/components/_header.scss';
 @use 'styles/components/_pokemon_list_details.scss';
-@use 'styles/components/_pokemon_details_evolution.scss';
-@use 'styles/components/_pokemon_details_artwork.scss';
-@use 'styles/components/_pokemon_details_stats.scss';
-@use 'styles/components/_pokemon_details_text.scss';
+@use 'styles/components/pokemon_details/_evolutions.scss';
+@use 'styles/components/pokemon_details/_evolutions_item.scss';
+@use 'styles/components/pokemon_details/_artwork.scss';
+@use 'styles/components/pokemon_details/_stats.scss';
+@use 'styles/components/pokemon_details/_text.scss';
 @use 'styles/components/_pokecard.scss';
 @use 'styles/components/_pokemon_title.scss';
 @use 'styles/components/_pokecard_navigation.scss';
 
-@import url('https://fonts.googleapis.com/css2?family=Titillium+Web:wght@400;700&family=Ubuntu+Mono:ital,wght@0,400;1,700&family=VT323&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Titillium+Web:wght@400;700;900&family=Ubuntu+Mono:ital,wght@0,400;1,700&family=VT323&display=swap');

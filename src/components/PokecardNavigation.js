@@ -7,23 +7,29 @@ class PokecardNavigation extends Component {
         this.state = {};
     }
 
+    getPrevSpeciesId(id) {
+        let new_id = id - 1;
+        return new_id < 1 ? species_list.length : new_id;
+    }
+
+    getNextSpeciesId(id) {
+        let new_id = id + 1;
+        return new_id > species_list.length ? 1 : new_id;
+    }
+
     getSpeciesById(id) {
         let species = species_list.filter(pokemon => pokemon.id === id);
 
         return species.length ? species[0].slug : false;
     }
 
-
     gotoPrevCard() {
-        let new_id = this.props.current_species.id - 1;
-        if (new_id < 1) new_id = species_list.length;
-        this.open(this.getSpeciesById(new_id));
+        this.open(this.getSpeciesById(this.getPrevSpeciesId(this.props.current_species.id)));
+
     }
 
     gotoNextCard() {
-        let new_id = this.props.current_species.id + 1;
-        if (new_id > species_list.length) new_id = 1;
-        this.open(this.getSpeciesById(new_id));
+        this.open(this.getSpeciesById(this.getNextSpeciesId(this.props.current_species.id)));
     }
 
     open(slug) {
@@ -32,13 +38,13 @@ class PokecardNavigation extends Component {
     }
 
     render() {
-        let { close } = this.props;
+        let { current_species, close } = this.props;
 
         return (
             <div className="pokecard_navigation">
-                <div className="prev" onClick={this.gotoPrevCard.bind(this)}><span class="icon">◄</span></div>
+                <div className="prev" onClick={this.gotoPrevCard.bind(this)}><span class="icon">⇠ #{this.getPrevSpeciesId(current_species.id)}</span></div>
                 <div className="close" onClick={close}><span class="icon">✕</span></div>
-                <div className="next" onClick={this.gotoNextCard.bind(this)}><span class="icon">►</span></div>
+                <div className="next" onClick={this.gotoNextCard.bind(this)}><span class="icon">#{this.getNextSpeciesId(current_species.id)} ⇢</span></div>
             </div>
         )
     }
