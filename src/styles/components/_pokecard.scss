@@ -52,7 +52,6 @@
         border-radius: 0.5em 0.5em 0 0;
 
         .pokemon-title {
-            padding-top: 1em;
             padding-left: 1.5em;
             position: absolute;
             z-index: 1;
@@ -76,6 +75,7 @@
         border-radius: 0.75em;
         box-shadow: 0 0 0.5em #000;
         opacity: 1;
-        background-size: 10px 10px, 100% !important;
+        border-right: 0.15em solid settings.$color-light;
+        border-bottom: 0.15em solid settings.$color-light;
     }
 }

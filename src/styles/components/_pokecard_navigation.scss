@@ -2,15 +2,37 @@
 
 .pokecard_navigation {
     height: 5vh;
-    width: 80vw;
-    max-width: 600px;
+    width: 86vw;
+    max-width: calc(600px + 6em);
     margin-top: 2em;
     display: flex;
     justify-content: space-between;
+    margin-top: 2em;
 
     > div {
-        font-size: 3em;
+        color: settings.$color-dark;
+        width: 5em;
+        height: 2.5em;
+        background-color: settings.$color-light;
+        text-align: center;
+        border-radius: 0.75em;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        transition: all 0.25s ease-in-out;
+
+        &:hover {
+            transform: translateY(-0.25em);
+        }
+
+        .icon {
+            font-size: 1.5em;
+        }
+    }
+
+    .close {
+        background-color: settings.$color-active;
         color: settings.$color-light;
-        line-height: 1;
     }
 }

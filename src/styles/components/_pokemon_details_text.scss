@@ -3,4 +3,13 @@
 .details-text {
     margin: 1em 1.5em;
     min-height: 4.5em;
+
+    span {
+        background-color: settings.$color-dark;
+        padding: 0 0.5em;
+        text-align: center;
+        color: settings.$color-light;
+        border-radius: 0.25em;
+        font-weight: bold;
+    }
 }

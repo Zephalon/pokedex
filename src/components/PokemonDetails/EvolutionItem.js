@@ -37,7 +37,7 @@ class EvolutionItem extends Component {
                 </div>
                 <div className="icon">
                     <img src={'pokemon_sprites/' + species.slug + '.png'} alt={'Icon ' + species.name} loading="lazy" />
-                    <div className={'icon-background type-' + species.types.join('-')}></div>
+                    <div className={'icon-background type type-' + species.types.join('-')}></div>
                 </div>
                 <div className="name">
                     <span>{species.name}</span>

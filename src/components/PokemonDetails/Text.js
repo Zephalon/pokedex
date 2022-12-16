@@ -21,7 +21,7 @@ class Text extends Component {
 
         return (
             <div className="details-text">
-                {!species_data ? 'Lade...' : ''}
+                <span>#{species_data.id}</span> {!species_data ? 'Lade...' : ''}
                 <strong>{type_description}</strong> {flavor_text}
             </div>
         )

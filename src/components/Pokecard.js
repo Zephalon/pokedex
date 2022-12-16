@@ -25,14 +25,14 @@ class Pokecard extends Component {
         return (
             <div id="pokecard-container">
                 <div id="pokecard">
-                    <div className={'top type2-' + species.types.join('-')}>
+                    <div className='top'>
                         <PokemonTitle id={id} name={species.name} types={species.types} />
                         <Artwork slug={species.slug} artwork_url={'pokemon_artwork/' + id + '.png'} />
                     </div>
                     <div className="bottom">
                         <PokemonDetails species={species} />
                     </div>
-                    <div className={'underlayer type-' + species.types.join('-')}></div>
+                    <div className={'underlayer type type-' + species.types.join('-')}></div>
                 </div>
                 <PokecardNavigation current_species={species} close={close} />
                 <div className="curtain" onClick={close}></div>

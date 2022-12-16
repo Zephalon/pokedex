@@ -29,6 +29,10 @@ body {
     background: linear-gradient(0deg, rgba(settings.$color-dark, 80%) 0%, rgba(settings.$color-dark, 20%) 100%);
 }
 
+.type {
+    background-size: 10px 10px, 100% !important;
+}
+
 @each $color-key-1,
 $color-value-1 in settings.$type_colors {
     .type-#{$color-key-1} {
