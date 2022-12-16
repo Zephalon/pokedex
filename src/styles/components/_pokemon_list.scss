@@ -6,7 +6,8 @@
     box-sizing: border-box;
     height: calc(100% - 5em);
     width: 100%;
-    overflow: auto;
+    overflow-y: auto;
+    overflow-x: hidden;
     position: relative;
 
     &::-webkit-scrollbar {
