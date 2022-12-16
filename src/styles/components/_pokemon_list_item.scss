@@ -16,13 +16,14 @@
     }
 
     .icon {
-        width: 96px;
+        min-width: 96px;
         text-align: center;
-        margin-left: 1em;
+        margin: 0 0.5em 0 1em;
     }
 
     .pokemon-title {
         width: 80%;
+        pointer-events: none;
     }
 
     .mid {
