@@ -71,7 +71,7 @@ class PokemonDetails extends Component {
     }
 
     render() {
-        let { species } = this.props;
+        let { species, close } = this.props;
         let { species_data, pokemon_data, evolution_data } = this.state;
         let slug = species.slug;
 

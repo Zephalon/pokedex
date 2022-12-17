@@ -16,18 +16,6 @@
     background-size: 20px 20px;
     background-repeat: repeat;
 
-    &::-webkit-scrollbar {
-        height: 0.5em;
-    }
-    
-    &::-webkit-scrollbar-track {
-        background-color: settings.$color-dark;
-    }
-    
-    &::-webkit-scrollbar-thumb {
-        background-color: settings.$color-light;
-    }
-
     &.loading, &.unknown {
         justify-content: center;
         display: flex;
