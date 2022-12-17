@@ -22,17 +22,21 @@ for fid, pokemon in enumerate(pokemon_list):
 
     # also save species if this is the default pokemon
     if (pokemon_data['is_default']):
+        # save species data
         species_data = requests.get(pokemon_data['species']['url']).json()
         with open('../public/data/species/' + species_data['name'] + '.json', 'w') as f:
             json.dump(species_data, f)
 
-        try:
-            evolution_data = requests.get(species_data['evolution_chain']['url']).json()
-            with open('../public/data/evolutions/' + species_data['name'] + '.json', 'w') as f:
-                json.dump(evolution_data, f)
-        except:
-            print('Could not save evolution chain.')
+        # get evolution chain
+        if (species_data['evolution_chain']):
+            try:
+                evolution_data = requests.get(species_data['evolution_chain']['url']).json()
+                with open('../public/data/evolutions/' + str(evolution_data['id']) + '.json', 'w') as f:
+                    json.dump(evolution_data, f)
+            except:
+                print('Could not save evolution chain.')
 
+        # save sprite
         if (species_data['name'] != pokemon['name']):
             try:
                 sprite_default = requests.get(pokemon_data['sprites']['front_default'])
@@ -40,6 +44,7 @@ for fid, pokemon in enumerate(pokemon_list):
             except:
                 print('Could not save species sprite.')
 
+        # create custom json files with all species
         name_de = [row for row in species_data['names'] if row['language']['name'] == 'de']
         types = []
         for type in pokemon_data['types']:
@@ -50,7 +55,8 @@ for fid, pokemon in enumerate(pokemon_list):
             'slug': species_data['name'],
             'name': name_de[0]['name'],
             'pokemon': pokemon_data['name'],
-            'types': types
+            'types': types,
+            'evolution_id': evolution_data['id'] if evolution_data else False
         }
 
         species_list.append(species)

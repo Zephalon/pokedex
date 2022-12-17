@@ -42,9 +42,9 @@ class PokecardNavigation extends Component {
 
         return (
             <div className="pokecard_navigation">
-                <div className="prev" onClick={this.gotoPrevCard.bind(this)}><span class="icon">⇠ #{this.getPrevSpeciesId(current_species.id)}</span></div>
-                <div className="close" onClick={close}><span class="icon">✕</span></div>
-                <div className="next" onClick={this.gotoNextCard.bind(this)}><span class="icon">#{this.getNextSpeciesId(current_species.id)} ⇢</span></div>
+                <div className="prev" onClick={this.gotoPrevCard.bind(this)}><span className="icon">⇠ #{this.getPrevSpeciesId(current_species.id)}</span></div>
+                <div className="close" onClick={close}><span className="icon">✕</span></div>
+                <div className="next" onClick={this.gotoNextCard.bind(this)}><span className="icon">#{this.getNextSpeciesId(current_species.id)} ⇢</span></div>
             </div>
         )
     }

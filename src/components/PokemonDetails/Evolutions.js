@@ -2,13 +2,17 @@ import React, { Component } from 'react';
 import EvolutionItem from "./EvolutionItem";
 import pokemon_list from "../../species.json";
 
-//import PokemonList from "./../PokemonList";
-
 class Evolutions extends Component {
     constructor(props) {
         super(props);
         this.state = {};
         this.evolutions = [];
+    }
+
+    componentDidUpdate(prev_props) {
+        if (prev_props.artwork_url !== this.props.artwork_url) {
+            this.evolutions = [];
+        }
     }
 
     walkEvolutionChain(chain) {

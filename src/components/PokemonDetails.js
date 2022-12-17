@@ -11,7 +11,7 @@ class PokemonDetails extends Component {
             pokemon_data: [],
             evolution_data: []
         };
-        this.preloaded = [];
+        this.preloading = [];
     }
 
     componentDidUpdate(prev_props) {
@@ -26,17 +26,23 @@ class PokemonDetails extends Component {
 
     async getSpeciesData() {
         let { species } = this.props;
+        let { species_data, evolution_data } = this.state;
 
-        if (!this.preloaded[species.slug]) {
-            this.loadData('species_data', '/data/species/' + species.slug + '.json', this.setData.bind(this));
-            this.loadData('pokemon_data', '/data/pokemon/' + species.pokemon + '.json', this.setData.bind(this));
-            this.loadData('evolution_data', '/data/evolutions/' + species.slug + '.json', this.setData.bind(this));
+        if (this.preloading[species.slug]) return
 
-            this.preloaded[species.slug] = true; // do not trigger twice
+        if (!species_data[species.slug]) {
+            this.loadData('species_data', species.slug, '/data/species/' + species.slug + '.json', this.setData.bind(this));
+            this.loadData('pokemon_data', species.slug, '/data/pokemon/' + species.pokemon + '.json', this.setData.bind(this));
         }
+
+        if (!evolution_data[species.evolution_id]) {
+            this.loadData('evolution_data', species.evolution_id, '/data/evolutions/' + species.evolution_id + '.json', this.setData.bind(this));
+        }
+
+        this.preloading[species.slug] = true;
     }
 
-    async loadData(data_key, file, callback) {
+    async loadData(data_property, data_key, file, callback) {
         fetch(file, {
             headers: {
                 'Content-Type': 'application/json',
@@ -48,18 +54,18 @@ class PokemonDetails extends Component {
                 return response.json();
             })
             .then(function (data) {
-                callback(data_key, data);
+                callback(data_property, data_key, data);
             }).catch(function() {
-                callback(data_key, []);
+                callback(data_property, data_key, []);
             });
     }
 
-    async setData(data_key, data) {
+    async setData(data_property, data_key, data) {
         this.setState((state, props) => {
-            let new_state = state[data_key];
-            new_state[props.species.slug] = data;
+            let new_state = state[data_property];
+            new_state[data_key] = data;
             return {
-                [data_key]: new_state
+                [data_property]: new_state
             };
         });
     }
@@ -73,7 +79,7 @@ class PokemonDetails extends Component {
             <div className="details">
                 <Text species_data={species_data[slug] ? species_data[slug] : false} />
                 <Stats stats={pokemon_data[slug] ? pokemon_data[slug]['stats'] : false} />
-                <Evolutions active_pokemon={slug} evolution_data={evolution_data[slug] ? evolution_data[slug] : false} />
+                <Evolutions active_pokemon={slug} evolution_data={evolution_data[species.evolution_id] ? evolution_data[species.evolution_id] : false} />
             </div>
         )
     }
