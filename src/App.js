@@ -11,7 +11,8 @@ class App extends Component {
     super(props);
     this.state = {
       show_card: false,
-      card_id: false
+      card_id: false,
+      last_card_id: false
     };
 
     this.last_hash = false;
@@ -37,7 +38,8 @@ class App extends Component {
     this.setState((state, props) => {
       return {
         show_card: true,
-        card_id: requested_id
+        card_id: requested_id,
+        last_card_id: this.state.card_id
       };
     });
   }
@@ -61,13 +63,13 @@ class App extends Component {
   }
 
   render() {
-    let { show_card, card_id } = this.state;
+    let { show_card, card_id, last_card_id } = this.state;
 
     return (
       <div className="app" key={this.props.id}>
 
         <Header />
-        {card_id ? <Pokecard key="pokecard" id={card_id} display={show_card} close={this.reset.bind(this)} /> : ''}
+        {card_id ? <Pokecard key="pokecard" id={card_id} last_id={last_card_id} display={show_card} close={this.reset.bind(this)} /> : ''}
         <Pokedex />
       </div>
     );
