@@ -9,8 +9,18 @@ class Header extends Component {
   render() {
     return (
       <div id="header" key={this.props.id}>
-        <img src="favicon/android-chrome-512x512.png" alt="Logo" /> 
-        <div id="title">Pokédex</div>
+        <div className="container">
+          <div className="start">
+            <img src="icons/star-filled.svg" alt="Star" />
+          </div>
+          <div className="logo">
+            <img src="favicon/android-chrome-512x512.png" alt="Logo" />
+            <div id="title">Pokédex</div>
+          </div>
+          <div className="search">
+            <img src="icons/search.svg" alt="Search" />
+          </div>
+        </div>
       </div >
     );
   }

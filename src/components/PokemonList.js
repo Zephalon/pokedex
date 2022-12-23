@@ -11,11 +11,13 @@ class PokemonList extends Component {
         let { pokemon } = this.props;
 
         return (
-            <ul id="pokemon_list">
-                {pokemon.map((monster) =>
-                    <PokemonListItem key={monster.id} id={monster.id} slug={monster.slug} name={monster.name} types={monster.types} default_pokemon={monster.pokemon} />
-                )}
-            </ul>
+            <div id="pokemon_list">
+                <ul className="container">
+                    {pokemon.map((monster) =>
+                        <PokemonListItem key={monster.id} id={monster.id} slug={monster.slug} name={monster.name} types={monster.types} default_pokemon={monster.pokemon} />
+                    )}
+                </ul>
+            </div>
         )
     }
 }

@@ -4,10 +4,10 @@
     border-bottom: 0.5em solid settings.$color-light;
     border-radius: 0.25em;
     transition: all 0.25s ease-in-out;
-    max-width: 720px;
     margin: 0 auto 1em auto;
     cursor: pointer;
     background-size: 10px 10px, 100% !important;
+    width: 100%;
 
     &:hover,
     &.open {

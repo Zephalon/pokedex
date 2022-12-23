@@ -3,28 +3,29 @@
 .pokemon-title {
     color: settings.$color-light;
 
+    @media (max-width: 480px) {
+        font-size: 1em !important;
+    }
+
     .name {
         font-size: 2.5em;
         font-weight: 900;
-        text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.5);
-        margin-bottom: 0.05em;
-
-        @media (max-width: 480px) {
-            font-size: 7vw;
-        }
+        text-shadow: 1px 1px 0 rgba(#000, 0.5);
+        margin-bottom: 0.05rem;
     }
 
     .types span {
         padding: 0.15em 0.5em 0.2em 0.5em;
-        margin-right: 0.5em;
+        margin-right: 0.5rem;
         display: block;
         float: left;
-        border-radius: 0.25em;
+        border-radius: 0.25rem;
         background-color: settings.$color-dark;
-        text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.5);
+        text-shadow: 1px 1px 0 rgba(#000, 0.75);
         text-transform: uppercase;
         font-family: settings.$font-family-pixelated;
         line-height: 1;
+        box-shadow: 1px 1px 0 rgba(#000, 0.25);
 
         @each $color-key,
         $color-value in settings.$type_colors {
