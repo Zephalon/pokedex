@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-class Search extends Component {
+class SearchBar extends Component {
   constructor(props) {
     super(props);
     this.state = {};
@@ -11,12 +11,14 @@ class Search extends Component {
   }
 
   render() {
+    let { show } = this.props;
+
     return (
-      <div id="search" className="container">
+      <div id="search_bar" className={'container ' + (show ? 'active' : 'inactive')}>
         <input type="text" onChange={this.updateSearch.bind(this)} />
       </div >
     );
   }
 }
 
-export default Search;
+export default SearchBar;

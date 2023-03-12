@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
-import Search from "./Header/Search";
+import StarButton from "./Header/StarButton";
+import SearchButton from "./Header/SearchButton";
+import Logo from "./Header/Logo";
+import SearchBar from "./Header/SearchBar";
 
 class Header extends Component {
   constructor(props) {
@@ -9,41 +12,30 @@ class Header extends Component {
     };
   }
 
-  toggleSearchBar() {
+  setSearchBar(new_state) {
     this.setState((state, props) => {
       return {
-        show_search_bar: !state.show_search_bar
+        show_search_bar: new_state
       };
     }, () => {this.updateSearch()});
   }
 
+  // proxy to modify request
   updateSearch(request) {
-    this.props.update_search(!this.state.show_search_bar ? false : request ?? false);
+    this.props.set_search(!this.state.show_search_bar ? false : request ?? false);
   }
 
   render() {
     let { show_search_bar } = this.state;
-    let component = false;
-
-    if (show_search_bar) {
-      component = <Search update_search={this.updateSearch.bind(this)} />;
-    }
 
     return (
       <div id="header" key={this.props.id}>
         <div className="container">
-          <div className="start">
-            <img src="icons/star-filled.svg" alt="Star" />
-          </div>
-          <div className="logo">
-            <img src="favicon/android-chrome-512x512.png" alt="Logo" />
-            <div id="title">Pokédex</div>
-          </div>
-          <div className="search" onClick={this.toggleSearchBar.bind(this)}>
-            <img src="icons/search.svg" alt="Search" />
-          </div>
+          <StarButton set_starred={this.props.set_starred} />
+          <Logo />
+          <SearchButton set_searchbar={this.setSearchBar.bind(this)} />
         </div>
-        {component}
+        <SearchBar update_search={this.updateSearch.bind(this)} show={show_search_bar} />
       </div >
     );
   }
