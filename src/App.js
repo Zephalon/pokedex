@@ -12,7 +12,8 @@ class App extends Component {
     this.state = {
       show_card: false,
       card_id: false,
-      last_card_id: false
+      last_card_id: false,
+      search_request: false
     };
 
     this.last_hash = false;
@@ -62,15 +63,23 @@ class App extends Component {
     return species.length ? species[0].id : false;
   }
 
+  updateSearch(request) {
+    this.setState((state, props) => {
+      return { 
+        search_request: request
+      };
+    });
+  }
+
   render() {
-    let { show_card, card_id, last_card_id } = this.state;
+    let { show_card, card_id, last_card_id, search_request } = this.state;
 
     return (
       <div className="app" key={this.props.id}>
 
-        <Header />
+        <Header update_search={this.updateSearch.bind(this)} />
         {card_id ? <Pokecard key="pokecard" id={card_id} last_id={last_card_id} display={show_card} close={this.reset.bind(this)} /> : ''}
-        <Pokedex />
+        <Pokedex search_request={search_request} />
       </div>
     );
   }
