@@ -30,10 +30,12 @@ class Header extends Component {
 
     return (
       <div id="header" key={this.props.id}>
-        <div className="container">
-          <StarButton set_starred={this.props.set_starred} />
-          <Logo />
-          <SearchButton set_searchbar={this.setSearchBar.bind(this)} />
+        <div className="top-bar">
+          <div className="container">
+            <Logo />
+            <StarButton set_starred={this.props.set_starred} />
+            <SearchButton set_searchbar={this.setSearchBar.bind(this)} />
+          </div>
         </div>
         <SearchBar update_search={this.updateSearch.bind(this)} show={show_search_bar} />
       </div >

@@ -2,15 +2,20 @@
 
 #header {
     width: 100%;
-    background-color: settings.$color-dark;
-    padding: 0.5em 1em 0.5em 0;
-    box-sizing: border-box;
+
+    .top-bar {
+        background-color: settings.$color-dark;
+        padding: 0.5em 1em 0.5em 0;
+        width: 100%;
+        box-sizing: border-box;
+    }
 
     .container {
         display: flex;
         flex-wrap: nowrap;
         align-items: center;
         justify-content: space-between;
+        gap: 1rem;
 
         img {
             height: 2em;
@@ -49,7 +54,7 @@
             display: flex;
             flex-wrap: nowrap;
             align-items: center;
-            justify-content: center;
+            flex-grow: 1;
         
             #title {
                 color: settings.$color-light;
@@ -60,16 +65,32 @@
                 font-weight: 900;
             }
         }
-
-        .search {
-        }
     }
 
     #search_bar {
-        display: none;
+        max-height: 0;
+        transition: all 0.25s ease-in-out;
+        overflow: hidden;
+        padding-right: 2rem;
+
+        input {
+            width: 100%;
+            background-color: transparent;
+            border-radius: 0;
+            border: none;
+            border-bottom: 1px solid settings.$color-light;
+            outline: none;
+            padding: 0.25rem 0;
+            background: transparent;
+            margin-top: 0.5rem;
+            color: settings.$color-light;
+            font-size: 1.5rem;
+        }
 
         &.active {
-            display: block;
+            max-height: 5rem;
+            padding-top: 0.5rem;
+            padding-bottom: 0.5rem;
         }
     }
 }

@@ -55,12 +55,14 @@ class Pokecard extends Component {
         return (
             <div id="pokecard-container">
                 <div id="pokecard" className={'type type-' + species.types[0] + ' ' + state_class}>
-                    <div className='top'>
+                    <div className='visual'>
                         <PokemonTitle id={id} name={species.name} types={species.types} />
                         <Artwork slug={species.slug} artwork_url={'pokemon_artwork/' + id + '.png'} />
                     </div>
-                    <div className="bottom">
-                        <PokemonDetails species={species} />
+                    <div className="pokecard-content">
+                        <div className="data">
+                            <PokemonDetails species={species} />
+                        </div>
                     </div>
                     <PokecardNavigation current_species={species} close={close} />
                     <div className={'underlayer inactive type type-' + (last_species ? last_species.types.join('-') : 'normal')}></div>

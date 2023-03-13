@@ -15,7 +15,7 @@ class SearchBar extends Component {
 
     return (
       <div id="search_bar" className={'container ' + (show ? 'active' : 'inactive')}>
-        <input type="text" onChange={this.updateSearch.bind(this)} />
+        <input type="text" onChange={this.updateSearch.bind(this)} placeholder="Name vom Pokemon..." />
       </div >
     );
   }
