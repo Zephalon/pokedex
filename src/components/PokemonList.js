@@ -13,9 +13,9 @@ class PokemonList extends Component {
         return (
             <div id="pokemon_list">
                 <ul className="container">
-                    {pokemon.map((monster) =>
+                    { pokemon && pokemon.length ? pokemon.map((monster) =>
                         <PokemonListItem key={monster.id} {...monster} default_pokemon={monster.pokemon} set_starred={this.props.set_starred.bind(this)}/>
-                    )}
+                    ) : ''}
                 </ul>
             </div>
         )

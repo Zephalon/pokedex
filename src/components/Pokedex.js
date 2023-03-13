@@ -52,7 +52,7 @@ class Pokedex extends Component {
   }
   
   mergePokemonData(pokemon_data) {
-    if (!pokemon_data) return;
+    if (!pokemon_data) return species_list;
     return species_list.map((item, i) => Object.assign({}, item, pokemon_data[item.id]));
   }
 
@@ -62,8 +62,8 @@ class Pokedex extends Component {
 
     let result = pokemon_list;
 
-    if (show_starred) result = result.filter(pokemon => pokemon.starred);
-    if (search_request) result = result.filter(pokemon => pokemon.name.toLowerCase().indexOf(search_request.toLowerCase()) > -1);
+    if (show_starred && result) result = result.filter(pokemon => pokemon.starred);
+    if (search_request && result) result = result.filter(pokemon => pokemon.name.toLowerCase().indexOf(search_request.toLowerCase()) > -1);
 
     return result;
   }
