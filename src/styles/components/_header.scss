@@ -35,18 +35,26 @@
                 fill: transparent;
             }
 
-            &:hover, &.active {
-                svg {
-                    stroke: settings.$color-active;
+            @media (hover: hover) {
+                &:hover {
+                    svg { stroke: settings.$color-active; }
                 }
+            }
+
+            &.active {
+                svg { stroke: settings.$color-active; }
             }
         }
 
         .star {
-            &:hover, &.active {
-                svg {
-                    fill: settings.$color-active;
+            @media (hover: hover) {
+                &:hover {
+                    svg { fill: settings.$color-active; }
                 }
+            }
+
+            &.active {
+                svg { fill: settings.$color-active; }
             }
         }
 

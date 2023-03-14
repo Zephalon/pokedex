@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import PokemonListItem from "./PokemonListItem";
+import Item from "./PokemonList/Item";
+import Empty from "./PokemonList/Empty";
 
 class PokemonList extends Component {
     constructor(props) {
@@ -13,9 +14,9 @@ class PokemonList extends Component {
         return (
             <div id="pokemon_list">
                 <ul className="container">
-                    { pokemon && pokemon.length ? pokemon.map((monster) =>
-                        <PokemonListItem key={monster.id} {...monster} default_pokemon={monster.pokemon} set_starred={this.props.set_starred.bind(this)}/>
-                    ) : ''}
+                    { pokemon.length ? pokemon.map((monster) =>
+                        <Item key={monster.id} {...monster} default_pokemon={monster.pokemon} set_starred={this.props.set_starred.bind(this)}/>
+                    ) : <Empty /> }
                 </ul>
             </div>
         )

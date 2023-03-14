@@ -9,15 +9,22 @@ A simple Pokédex for small kids made with React.js. It shows for all current sp
 - Evolutions
 - Stats & Strength
 
-The interface is currently only available in german but can of course be modified.
+Also you can:
+- Search for Pokémon by name
+- Adde Pokémon to favorites
+
+The interface is currently only available in german but can easily be modified.
 
 Here's a [preview](https://pokedex.addictivity.de).
+
+## Installation
+    npm i
 
 ## Scraping
 
 ### Data & Sprites
 
-This project uses the free data from Pokeapi.co wich is cached and transformed with a python script. The basic dataset and all sprites (up to GEN8) are already included in the repository. If you need to update or modify the database you can always re-scrape the API with Python.
+This project uses the free data from Pokeapi.co which is cached and transformed with a Python script. The basic dataset and all sprites (up to GEN8) are already included in the repository. If you need to update or modify the database you can always re-scrape the API with Python.
 
     cd scraper
     python pokeapi.py
