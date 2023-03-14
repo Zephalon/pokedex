@@ -9,10 +9,11 @@
     background-size: 10px 10px, 100% !important;
     width: 100%;
 
-    &:hover,
-    &.open {
-        border-bottom-color: settings.$color-active;
-        transform: translateY(-0.25em);
+    @media (hover: hover) {
+        &:hover {
+            border-bottom-color: settings.$color-active;
+            transform: translateY(-0.25em);
+        }
     }
 
     .icon {

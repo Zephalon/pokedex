@@ -64,7 +64,6 @@ class Pokecard extends Component {
                             <PokemonDetails species={species} />
                         </div>
                     </div>
-                    <PokecardNavigation current_species={species} close={close} />
                     <div className={'underlayer inactive type type-' + (last_species ? last_species.types.join('-') : 'normal')}></div>
                     <div className={'underlayer active type type-' + species.types.join('-')}></div>
                 </div>

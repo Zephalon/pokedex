@@ -36,9 +36,9 @@ class Artwork extends Component {
         }
         // show fallback image (sprite)
         img.onerror = () => {
-            this.artwork_url = 'pokemon_sprites/' + this.props.slug + '.png';
             this.setState((state, props) => {
                 return {
+                    image_unavailable: true,
                     artwork_preloaded: true
                 };
             });
@@ -47,8 +47,9 @@ class Artwork extends Component {
     }
 
     render() {
-        let { artwork_preloaded } = this.state;
-        let { artwork_url } = this.props;
+        let { image_unavailable, artwork_preloaded } = this.state;
+        let { artwork_url, slug } = this.props;
+        if (image_unavailable) artwork_url = 'pokemon_sprites/' + slug + '.png';
 
         return (
             <div className={'artwork ' + (artwork_preloaded ? 'loaded' : 'loading')}>

@@ -17,6 +17,9 @@ The interface is currently only available in german but can easily be modified.
 
 Here's a [preview](https://pokedex.addictivity.de).
 
+## Installation
+    npm i
+
 ## Scraping
 
 ### Data & Sprites
