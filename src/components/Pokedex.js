@@ -13,6 +13,8 @@ class Pokedex extends Component {
 
   componentDidMount() {
     this.getLocalstorage();
+
+    window.addEventListener('update-localstorage', this.getLocalstorage.bind(this));
   }
 
   getLocalstorage() {
@@ -30,25 +32,6 @@ class Pokedex extends Component {
         pokemon_list: this.mergePokemonData(result)
       };
     });
-  }
-
-  setStarred(id, state) {
-    let { pokemon_data } = this.state;
-
-    if (pokemon_data[id]) {
-      pokemon_data[id].starred = state;
-    } else {
-      pokemon_data[id] = {
-        starred: state
-      }
-    }
-    
-    this.setState((state, props) => {
-      return {
-        pokemon_data: pokemon_data,
-        pokemon_list: this.mergePokemonData(pokemon_data)
-      };
-    }, () => { window.localStorage.setItem('pokemon-data', JSON.stringify(this.state.pokemon_data)) });
   }
   
   mergePokemonData(pokemon_data) {
@@ -73,7 +56,7 @@ class Pokedex extends Component {
   render() {
     return (
       <div id="pokedex" key={this.props.id}>
-        <PokemonList key="pokemon-list" pokemon={this.filterSpecies()} set_starred={this.setStarred.bind(this)} />
+        <PokemonList key="pokemon-list" pokemon={this.filterSpecies()} />
       </div >
     );
   }

@@ -4,6 +4,7 @@ import Artwork from "./PokemonDetails/Artwork";
 import PokemonDetails from "./PokemonDetails";
 import PokemonTitle from "./PokemonTitle";
 import PokecardNavigation from "./PokecardNavigation";
+import Star from "./Star";
 
 class Pokecard extends Component {
     constructor(props) {
@@ -25,6 +26,7 @@ class Pokecard extends Component {
     }
 
     getSpeciesById(id) {
+        if (!id) id = this.props.id;
         let species = species_list.filter(pokemon => pokemon.id === id);
 
         return species.length ? species[0] : false;
@@ -44,7 +46,7 @@ class Pokecard extends Component {
         let { id, last_id, close } = this.props;
         let { ready } = this.state;
 
-        let species = this.getSpeciesById(id);
+        let species = this.getSpeciesById();
         let last_species = this.getSpeciesById(last_id);
         let state_class = ready ? 'ready' : 'switching';
 
@@ -57,6 +59,7 @@ class Pokecard extends Component {
                 <div id="pokecard" className={'type type-' + species.types[0] + ' ' + state_class}>
                     <div className='visual'>
                         <PokemonTitle id={id} name={species.name} types={species.types} />
+                        <Star id={id} />
                         <Artwork slug={species.slug} artwork_url={'pokemon_artwork/' + id + '.png'} />
                     </div>
                     <div className="pokecard-content">

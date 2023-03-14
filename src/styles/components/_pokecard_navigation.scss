@@ -7,6 +7,7 @@
     margin-top: 2em;
     display: flex;
     justify-content: space-between;
+    min-height: 3.5rem;
 
     @media (max-width: 600px) and (max-height: 800px) {
         //display: none;
@@ -43,12 +44,16 @@
         color: settings.$color-light;
     }
 
-    @media (max-width: 600px) and (max-height: 800px) {
+    @media (max-height: 800px) {
         height: 2.5rem;
+    }
+
+    @media (max-width: 600px) and (max-height: 800px) {
         width: 100%;
         margin: 0;
         position: absolute;
         bottom: 0;
+        min-height: 2.5rem;
 
         > div {
             border-radius: 0;

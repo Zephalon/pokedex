@@ -63,7 +63,7 @@ class App extends Component {
     return species.length ? species[0].id : false;
   }
 
-  setSearch(request) {
+  showSearch(request) {
     this.setState((state, props) => {
       return { 
         search_request: request
@@ -71,7 +71,7 @@ class App extends Component {
     });
   }
 
-  setStarred(request) {
+  showStarred(request) {
     this.setState((state, props) => {
       return { 
         show_starred: request
@@ -85,7 +85,7 @@ class App extends Component {
     return (
       <div className="app" key={this.props.id}>
 
-        <Header set_search={this.setSearch.bind(this)} set_starred={this.setStarred.bind(this)} />
+        <Header set_search={this.showSearch.bind(this)} set_starred={this.showStarred.bind(this)} />
         {card_id ? <Pokecard key="pokecard" id={card_id} last_id={last_card_id} display={show_card} close={this.reset.bind(this)} /> : ''}
         <Pokedex search_request={search_request} show_starred={show_starred} />
       </div>
