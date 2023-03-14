@@ -20,8 +20,7 @@ class Star extends Component {
                 return {
                     starred: false
                 };
-            });
-            this.getLocalstorage();
+            }, () => {this.getLocalstorage()});
         }
     }
 
@@ -50,6 +49,8 @@ class Star extends Component {
         } catch (ex) {
             // dont care
         }
+        
+        if (!pokemon_data) pokemon_data = [];
 
         if (pokemon_data[id]) {
             pokemon_data[id].starred = new_state;
