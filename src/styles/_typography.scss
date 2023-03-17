@@ -1,6 +1,6 @@
 @use 'settings';
 
-body {
+html {
     font-family: settings.$font-family-text;
     font-weight: settings.$font-weight-normal;
     line-height: 1.4;
@@ -12,7 +12,7 @@ body {
     }
 
     @media (max-width: 480px) {
-        font-size: settings.$base-size - 2px;
+        font-size: settings.$base-size - 3px;
     }
 }
 

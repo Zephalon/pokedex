@@ -18,6 +18,36 @@ class App extends Component {
 
     this.last_hash = false;
     this.loaded = false;
+    this.mouse_position = { x: 0, y: 0 }
+    this.light_position = { x: 50, y: 50 };
+
+    window.addEventListener('mousemove', this.handleMouseMove.bind(this));
+    this.setLightSource();
+  }
+
+  setLightSource() {
+    const variation = 20;
+    const doc = { 'x': document.body.clientWidth, 'y': document.body.clientHeight };
+
+    ['x', 'y'].forEach(d => {
+      let new_position = (50 - (variation * 0.5)) + ((this.mouse_position[d] / doc[d]) * variation);
+
+      if (Math.abs(this.light_position[d] - new_position) > 2) {
+        this.light_position[d] = this.light_position[d] + ((new_position - this.light_position[d]) * 0.1);
+        document.documentElement.style.setProperty(`--pos${d}`, `${this.light_position[d]}%`);
+      }
+    });
+
+    requestAnimationFrame(this.setLightSource.bind(this));
+  }
+
+  handleMouseMove(event) {
+    this.mouse_position.x = event.pageX;
+    this.mouse_position.y = event.pageY;
+  }
+
+  getPositionPercentage(value, ) {
+
   }
 
   async componentDidMount() {
