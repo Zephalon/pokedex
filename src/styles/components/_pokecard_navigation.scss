@@ -1,18 +1,11 @@
 @use '../settings';
 
 .pokecard_navigation {
-    height: 5vh;
-    width: 85vw;
-    max-width: 600px;
     margin-top: 2em;
     display: flex;
     justify-content: space-between;
-    min-height: 3.5rem;
-
-    @media (max-width: 600px) and (max-height: 800px) {
-        //display: none;
-        //height: inherit;
-    }
+    height: 3.5rem;
+    width: var(--card_width);
 
     > div {
         color: settings.$color-dark;
@@ -42,23 +35,5 @@
     .close {
         background-color: settings.$color-active;
         color: settings.$color-light;
-    }
-
-    @media (max-height: 800px) {
-        height: 2.5rem;
-    }
-
-    @media (max-width: 600px) and (max-height: 800px) {
-        width: 100%;
-        margin: 0;
-        position: absolute;
-        bottom: 0;
-        min-height: 2.5rem;
-
-        > div {
-            border-radius: 0;
-            flex-grow: 1;
-            height: 100%;
-        }
     }
 }

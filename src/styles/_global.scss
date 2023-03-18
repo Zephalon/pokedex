@@ -1,5 +1,10 @@
 @use 'settings';
 
+:root {
+    --card_width: 30rem;
+    --card_aspect: 0.714;
+}
+
 html,
 body,
 #root,

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import species_list from "../species.json";
 import Artwork from "./PokemonDetails/Artwork";
 import PokemonDetails from "./PokemonDetails";
+import PokemonStats from "./PokemonStats";
 import PokemonTitle from "./PokemonTitle";
 import PokecardNavigation from "./PokecardNavigation";
 import Star from "./Star";
@@ -57,15 +58,16 @@ class Pokecard extends Component {
         return (
             <div id="pokecard-container">
                 <div id="pokecard" className={'type type-' + species.types[0] + ' ' + state_class}>
-                    <div className="content">
+                    <div className="content-wrapper">
                         <div className='visual'>
                             <PokemonTitle id={id} name={species.name} types={species.types} />
                             <Star id={id} />
                             <Artwork slug={species.slug} artwork_url={'pokemon_artwork/' + id + '.png'} />
                         </div>
                         <div className="pokecard-content">
-                            <div className="data">
+                            <div className="track">
                                 <PokemonDetails species={species} />
+                                <PokemonStats species={species} />
                             </div>
                         </div>
                         <div className={'underlayer inactive type type-' + (last_species ? last_species.types.join('-') : 'normal')}></div>

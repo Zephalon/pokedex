@@ -2,14 +2,8 @@
 
 .details {
     height: 100%;
-    background-color: settings.$color-light;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    border-radius: 0.5em 0.5em 0 0;
-    background-image: linear-gradient(135deg, rgba(#000, 0.05) 25%, transparent 25%), linear-gradient(225deg, rgba(#000, 0.05) 25%, transparent 25%), linear-gradient(45deg, rgba(#000, 0.05) 25%, transparent 25%), linear-gradient(315deg, rgba(#000, 0.05) 25%, settings.$color-light 25%);
-    background-position: 10px 0, 10px 0, 0 0, 0 0;
-    background-size: 20px 20px;
-    background-repeat: repeat;
-    pointer-events: all;
+    justify-content: end;
+    gap: 1rem;
 }

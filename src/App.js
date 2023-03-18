@@ -18,19 +18,22 @@ class App extends Component {
 
     this.last_hash = false;
     this.loaded = false;
-    this.mouse_position = { x: 0, y: 0 }
+    this.mouse_position = { x: 0, y: 0 };
+    this.device_orentation = null;
     this.light_position = { x: 50, y: 50 };
 
     window.addEventListener('mousemove', this.handleMouseMove.bind(this));
+    if (window.DeviceOrientationEvent) window.addEventListener('deviceorientation', this.handleOrientation.bind(this), true);
     this.setLightSource();
   }
 
   setLightSource() {
     const variation = 20;
     const doc = { 'x': document.body.clientWidth, 'y': document.body.clientHeight };
+    const source = this.device_orentation ?? this.mouse_position;
 
     ['x', 'y'].forEach(d => {
-      let new_position = (50 - (variation * 0.5)) + ((this.mouse_position[d] / doc[d]) * variation);
+      let new_position = (50 - (variation * 0.5)) + ((source[d] / doc[d]) * variation);
 
       if (Math.abs(this.light_position[d] - new_position) > 2) {
         this.light_position[d] = this.light_position[d] + ((new_position - this.light_position[d]) * 0.1);
@@ -46,8 +49,16 @@ class App extends Component {
     this.mouse_position.y = event.pageY;
   }
 
-  getPositionPercentage(value, ) {
+  handleOrientation(event) {
+    if (!event.alpha || !event.beta) return;
 
+    const max_angle = 30;
+    const clamp = (num, min, max) => Math.min(Math.max(num, min), max);
+
+    this.device_orentation = {
+      x: clamp(event.alpha, max_angle * -1, max_angle) / 30 * document.body.clientWidth,
+      y: clamp(event.beta - max_angle * -1, max_angle) / 30 * document.body.clientHeight
+    }
   }
 
   async componentDidMount() {

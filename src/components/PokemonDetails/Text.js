@@ -21,8 +21,8 @@ class Text extends Component {
 
         return (
             <div className="details-text">
-                <span>#{species_data.id}</span> {!species_data ? 'Lade...' : ''}
-                <strong>{type_description}</strong> {flavor_text}
+                <span className="pid">#{species_data.id}</span> <span className="flavor">{!species_data ? 'Lade...' : ''}
+                <strong>{type_description}</strong> {flavor_text}</span>
             </div>
         )
     }

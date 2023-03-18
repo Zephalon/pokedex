@@ -26,10 +26,6 @@
             transform: translateY(-0.25em);
         }
 
-        @media (max-width: 480px) {
-           margin: 0;
-        }
-
         .trigger {
             color: settings.$color-dark;
             position: absolute;
