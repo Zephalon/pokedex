@@ -22,12 +22,31 @@ class App extends Component {
     this.device_orentation = null;
     this.light_position = { x: 50, y: 50 };
 
+    this.lastCalledTime = Date.now();
+    this.fps = [];
+
     window.addEventListener('mousemove', this.handleMouseMove.bind(this));
     if (window.DeviceOrientationEvent) window.addEventListener('deviceorientation', this.handleOrientation.bind(this), true);
     this.setLightSource();
   }
 
   setLightSource() {
+    /*
+    if(!this.lastCalledTime) {
+      this.lastCalledTime = Date.now();
+      this.fps = [];
+      return;
+   }
+   let delta = (Date.now() - this.lastCalledTime)/1000;
+   this.lastCalledTime = Date.now();
+   this.fps.push(1/delta);
+   if (this.fps.length > 120) this.fps.shift();
+   console.log("FPS: " + Math.round(Math.min(...this.fps)));
+   */
+
+    //this.handleOrientation({ alpha: -40, beta: -40 });
+    //console.log(this.device_orentation);
+
     const variation = 20;
     const doc = { 'x': document.body.clientWidth, 'y': document.body.clientHeight };
     const source = this.device_orentation ?? this.mouse_position;
@@ -37,7 +56,10 @@ class App extends Component {
 
       if (Math.abs(this.light_position[d] - new_position) > 2) {
         this.light_position[d] = this.light_position[d] + ((new_position - this.light_position[d]) * 0.1);
-        document.documentElement.style.setProperty(`--pos${d}`, `${this.light_position[d]}%`);
+        const containers = document.getElementsByClassName('shiny-animated');
+        for (let container of containers) {
+          container.style.setProperty(`--pos${d}`, `${this.light_position[d]}%`);
+        }
       }
     });
 
@@ -50,14 +72,14 @@ class App extends Component {
   }
 
   handleOrientation(event) {
-    if (!event.alpha || !event.beta) return;
+    if (!Number.isInteger(event.gamma) || !Number.isInteger(event.beta)) return;
 
     const max_angle = 30;
     const clamp = (num, min, max) => Math.min(Math.max(num, min), max);
 
     this.device_orentation = {
-      x: clamp(event.alpha, max_angle * -1, max_angle) / 30 * document.body.clientWidth,
-      y: clamp(event.beta - max_angle * -1, max_angle) / 30 * document.body.clientHeight
+      x: clamp(event.gamma + max_angle, 0, max_angle * 2) / (max_angle * 2) * document.body.clientWidth,
+      y: clamp(event.beta + max_angle, 0, max_angle * 2) / (max_angle * 2) * document.body.clientHeight
     }
   }
 

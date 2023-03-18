@@ -1,6 +1,6 @@
 # Pokédex
 
-A simple Pokédex for small kids made with React.js. It shows for all current species:
+A simple Pokédex for kids made with React.js. It shows for all species:
 - Name
 - Types
 - Sprite & Artwork
@@ -11,7 +11,7 @@ A simple Pokédex for small kids made with React.js. It shows for all current sp
 
 Also you can:
 - Search for Pokémon by name
-- Adde Pokémon to favorites
+- Add Pokémon to favorites
 
 The interface is currently only available in german but can easily be modified.
 
@@ -37,7 +37,7 @@ The copyrighted artwork is not included in this repository. It is free to use fo
     cd scraper
     python artwork.py
 
-You can of course also include images from other sources - just make sure you add them according to this scheme: `public/pokemon_artwork/[species_id].png`.
+Of course you can add images from other sources - just make sure you add them according to this scheme: `public/pokemon_artwork/[species_id].png`.
 
 ## Development & Building
 

@@ -6,6 +6,7 @@
     justify-content: space-between;
     height: 3.5rem;
     width: var(--card_width);
+    min-height: 4.5rem;
 
     > div {
         color: settings.$color-dark;

@@ -25,6 +25,7 @@ class Item extends Component {
                     <Star id={id} />
                 </div>
                 <div className="pattern"></div>
+                <div className="shiny"></div>
             </li>
         )
     }

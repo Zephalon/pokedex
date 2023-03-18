@@ -3,6 +3,7 @@
 :root {
     --card_width: 30rem;
     --card_aspect: 0.714;
+    --radius: 4.55% / 3.5%;
 }
 
 html,
@@ -22,7 +23,6 @@ body,
 
 html,
 body {
-    font-size: settings.$base-size;
     color: settings.$color-dark;
     font-family: settings.$font-family-text;
     background-color: settings.$color-dark;

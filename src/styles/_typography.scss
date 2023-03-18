@@ -7,12 +7,8 @@ html {
     color: settings.$color-dark;
     font-size: settings.$base-size;
 
-    @media (max-width: 727px) {
-        font-size: settings.$base-size - 1px;
-    }
-
     @media (max-width: 480px) {
-        font-size: settings.$base-size - 3px;
+        font-size: settings.$base-size - 4px;
     }
 }
 

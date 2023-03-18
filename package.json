@@ -1,6 +1,6 @@
 {
   "name": "pokedex",
-  "version": "1.1.0",
+  "version": "2.0.0a1",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.5",
@@ -18,7 +18,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "deploy": "git checkout main && react-scripts build && node deploy"
+    "deploy": "react-scripts build && node deploy"
   },
   "eslintConfig": {
     "extends": [
