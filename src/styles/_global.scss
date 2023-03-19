@@ -55,7 +55,8 @@ $color-value-1 in settings.$type_colors {
 }
 
 .container {
-    max-width: 720px;
+    max-width: var(--card_width);
+    width: 100%;
     margin: 0 auto;
     padding: 0 1rem;
 }

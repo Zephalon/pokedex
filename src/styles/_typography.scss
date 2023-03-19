@@ -7,7 +7,7 @@ html {
     color: settings.$color-dark;
     font-size: settings.$base-size;
 
-    @media (max-width: 480px) {
+    @media (max-width: 540px) {
         font-size: settings.$base-size - 4px;
     }
 }
