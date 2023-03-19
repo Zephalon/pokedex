@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import PokemonTitle from "../PokemonTitle";
-import { ReactComponent as Icon } from '../../svg/star.svg';
 
 class Empty extends Component {
     constructor(props) {

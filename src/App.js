@@ -44,7 +44,7 @@ class App extends Component {
    console.log("FPS: " + Math.round(Math.min(...this.fps)));
    */
 
-    //this.handleOrientation({ alpha: -40, beta: -40 });
+    //this.handleOrientation({ gamma: Math.random() * 100, beta: Math.random() * 100 });
     //console.log(this.device_orentation);
 
     const variation = 20;
@@ -54,7 +54,7 @@ class App extends Component {
     ['x', 'y'].forEach(d => {
       let new_position = (50 - (variation * 0.5)) + ((source[d] / doc[d]) * variation);
 
-      if (Math.abs(this.light_position[d] - new_position) > 2) {
+      if (Math.abs(this.light_position[d] - new_position) > 0.25) {
         this.light_position[d] = this.light_position[d] + ((new_position - this.light_position[d]) * 0.1);
         const containers = document.getElementsByClassName('shiny-animated');
         for (let container of containers) {
@@ -72,7 +72,7 @@ class App extends Component {
   }
 
   handleOrientation(event) {
-    if (!Number.isInteger(event.gamma) || !Number.isInteger(event.beta)) return;
+    if (event.beta === null || event.gamma === null || isNaN(event.beta) || isNaN(event.gamma)) return;
 
     const max_angle = 30;
     const clamp = (num, min, max) => Math.min(Math.max(num, min), max);

@@ -24,3 +24,6 @@ yarn-error.log*
 
 /public/pokemon_icons/*.png
 /public/pokemon_artwork/*.png
+
+deploy.js
+package-lock.json

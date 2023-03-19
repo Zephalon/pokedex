@@ -69,8 +69,8 @@ class PokemonStats extends Component {
     }
 
     render() {
-        let { species, close } = this.props;
-        let { species_data, pokemon_data, evolution_data } = this.state;
+        let { species } = this.props;
+        let { pokemon_data } = this.state;
         let slug = species.slug;
 
         return (
