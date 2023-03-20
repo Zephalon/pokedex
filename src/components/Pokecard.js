@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import species_list from "../species.json";
-import Artwork from "./PokemonDetails/Artwork";
-import PokemonDetails from "./PokemonDetails";
-import PokemonStats from "./PokemonStats";
+import species_list from "../data/species.json";
+import Artwork from "./Pokecard/Artwork";
 import PokemonTitle from "./PokemonTitle";
-import PokecardNavigation from "./PokecardNavigation";
+import Navigation from "./Pokecard/Navigation";
 import Star from "./Star";
+import SectionFlavoredEvolutions from "./Pokecard/Sections/FlavoredEvolutions/Section";
+import SectionStats from "./Pokecard/Sections/Stats/Section";
 
 class Pokecard extends Component {
     constructor(props) {
@@ -66,8 +66,8 @@ class Pokecard extends Component {
                         </div>
                         <div className="pokecard-content">
                             <div className="track">
-                                <PokemonDetails species={species} />
-                                <PokemonStats species={species} />
+                                <SectionFlavoredEvolutions species={species} />
+                                <SectionStats species={species} />
                             </div>
                         </div>
                         <div className={'underlayer inactive type type-' + (last_species ? last_species.types.join('-') : 'normal')}></div>
@@ -75,7 +75,7 @@ class Pokecard extends Component {
                     </div>
                     <div className="shiny shiny-animated"></div>
                 </div>
-                <PokecardNavigation current_species={species} close={close} />
+                <Navigation current_species={species} close={close} />
                 <div className="curtain" onClick={close}></div>
             </div>
         );

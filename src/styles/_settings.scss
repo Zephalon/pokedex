@@ -20,7 +20,7 @@ $type_colors: (
     "normal": #A8A878,
     "grass": #78C850,
     "fire": #F08030,
-    "water": #6890F0,
+    "water": #6890F0, 
     "electric": #F8D030,
     "ice": #98D8D8,
     "fighting": #C03028,
@@ -36,3 +36,5 @@ $type_colors: (
     "steel": #B8B8D0,
     "fairy": #F0B6BC
 );
+
+$type_dark_colors: ("poison", "water", "dark", "dragon", "ghost", "fighting");

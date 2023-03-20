@@ -3,7 +3,7 @@
 .artwork {
     max-width: 100%;
     height: calc(100% - 1em);
-    padding: 3em 1em 0 1em;
+    padding: 4em 1em 0 1em;
     overflow: hidden;
     position: relative;
     display: flex;
@@ -12,6 +12,8 @@
     justify-content: center;
     transform: scale(0.5);
     transition: all 0.5s ease-out;
+    position: relative;
+    z-index: 1000;
 
     &.loaded {
         transform: scale(1);

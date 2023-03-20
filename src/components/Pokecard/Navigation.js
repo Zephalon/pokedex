@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import species_list from "../species.json";
+import species_list from "../../data/species.json";
 
-class PokecardNavigation extends Component {
+class Navigation extends Component {
     constructor(props) {
         super(props);
         this.state = {};
@@ -50,4 +50,4 @@ class PokecardNavigation extends Component {
     }
 }
 
-export default PokecardNavigation;
+export default Navigation;

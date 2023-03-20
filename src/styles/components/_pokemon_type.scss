@@ -1,0 +1,27 @@
+@use '../settings';
+
+.pokemon-type {
+    padding: 0.15em 0.5em 0.2em 0.5em;
+    margin-right: 0.5rem;
+    display: block;
+    float: left;
+    border-radius: 0.25rem;
+    background-color: settings.$color-dark;
+    text-transform: uppercase;
+    font-family: settings.$font-family-pixelated;
+    line-height: 1;
+    border: 1px solid settings.$color-dark;
+    color: settings.$color-dark;
+
+    @each $color-key, $color-value in settings.$type_colors {
+        &[title="#{$color-key}"] {
+            background-color: #{$color-value};
+        }
+    }
+
+    @each $color-key in settings.$type_dark_colors {
+        &[title="#{$color-key}"] {
+            color: settings.$color-light;
+        }
+    }
+}

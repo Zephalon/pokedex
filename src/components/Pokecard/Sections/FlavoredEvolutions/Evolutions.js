@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import EvolutionItem from "./EvolutionItem";
-import pokemon_list from "../../species.json";
+import pokemon_list from "../../../../data/species.json";
 
 class Evolutions extends Component {
     constructor(props) {

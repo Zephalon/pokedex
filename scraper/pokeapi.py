@@ -2,10 +2,34 @@ import requests
 import json
 
 API = 'https://pokeapi.co/api/v2/'
+LANGUAGE = 'de'
+
+# DAMAGE RELATIONS
+types = requests.get(API + 'type').json()['results']
+all_types = {}
+
+for tid, type in enumerate(types):
+    type_details = requests.get(type['url']).json()
+    print('Scraping type: ' + type_details['name'])
+
+    name = [row for row in type_details['names'] if row['language']['name'] == LANGUAGE]
+
+    all_types[type_details['name']] = {
+        'id': type_details['id'],
+        'name': name[0]['name'],
+        'damage_relations': type_details['damage_relations']
+    }
+
+    all_types[type_details['name']]['damage_relations'] = type_details['damage_relations']
+
+
+with open('../src/data/all_types.json', 'w') as f:
+    json.dump(all_types, f)
 
 pokemon_list = requests.get(API + 'pokemon?limit=2000&offset=0').json()['results']
 species_list = []
 
+# SPECIES DATA
 for fid, pokemon in enumerate(pokemon_list):
     print('Scraping #' + str(fid + 1) + ' (' + pokemon['name'] + ')')
 
@@ -45,7 +69,7 @@ for fid, pokemon in enumerate(pokemon_list):
                 print('Could not save species sprite.')
 
         # create custom json files with all species
-        name_de = [row for row in species_data['names'] if row['language']['name'] == 'de']
+        name = [row for row in species_data['names'] if row['language']['name'] == LANGUAGE]
         types = []
         for type in pokemon_data['types']:
             types.append(type['type']['name']);
@@ -53,7 +77,7 @@ for fid, pokemon in enumerate(pokemon_list):
         species = {
             'id': species_data['id'],
             'slug': species_data['name'],
-            'name': name_de[0]['name'],
+            'name': name[0]['name'],
             'pokemon': pokemon_data['name'],
             'types': types,
             'evolution_id': evolution_data['id'] if evolution_data else False
@@ -61,5 +85,5 @@ for fid, pokemon in enumerate(pokemon_list):
 
         species_list.append(species)
 
-with open('../src/species.json', 'w') as f:
+with open('../src/data/species.json', 'w') as f:
     json.dump(species_list, f)

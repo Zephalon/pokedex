@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import Stats from "./PokemonDetails/Stats";
+import Text from "./Text";
+import Evolutions from "./Evolutions";
 
-class PokemonStats extends Component {
+class Section extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -70,15 +71,16 @@ class PokemonStats extends Component {
 
     render() {
         let { species } = this.props;
-        let { pokemon_data } = this.state;
+        let { species_data, evolution_data } = this.state;
         let slug = species.slug;
 
         return (
             <div className="details">
-                <Stats stats={pokemon_data[slug] ? pokemon_data[slug]['stats'] : false} />
+                <Text species_data={species_data[slug] ?? false} />
+                <Evolutions active_pokemon={slug} evolution_data={evolution_data[species.evolution_id] ? evolution_data[species.evolution_id] : false} />
             </div>
         )
     }
 }
 
-export default PokemonStats;
+export default Section;

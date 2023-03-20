@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import type_lookup from "../type_lookup.json";
+import Type from "./PokemonType";
 
 class PokemonTitle extends Component {
     constructor(props) {
@@ -14,7 +14,7 @@ class PokemonTitle extends Component {
                 <div className="name">{name}</div>
                 <div className="types">
                     {types.map((type) =>
-                        <span key={id + '-' + type} title={type}>{type_lookup[type]}</span>
+                        <Type key={name + type} unique={name} type={type} />
                     )}
                 </div>
             </div>

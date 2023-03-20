@@ -15,6 +15,7 @@
     height: 100%;
     overflow-y: auto;
     padding-top: 1rem;
+    perspective: 100px;
 
     @media (max-height: 768px) {
         justify-content: start;
@@ -40,9 +41,10 @@
     aspect-ratio: var(--card_aspect);
     display: grid;
     grid-area: 1/1;
-    box-shadow: 0 0 2em settings.$color-active;
     backface-visibility: hidden;
     min-height: calc(var(--card_width) * (1 / var(--card_aspect)));
+    transform: rotate3d(0, 1, 0, var(--rx));
+    transform-style: preserve-3d;
 
     .content-wrapper {
         height: 100%;

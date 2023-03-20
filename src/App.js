@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 import './App.scss';
-import pokemon_list from "./species.json";
+import pokemon_list from "./data/species.json";
 import Header from "./components/Header";
 import Pokedex from "./components/Pokedex";
 import Pokecard from "./components/Pokecard";
@@ -60,6 +60,9 @@ class App extends Component {
         for (let container of containers) {
           container.style.setProperty(`--pos${d}`, `${this.light_position[d]}%`);
         }
+
+        const pokecard = document.getElementById('pokecard');
+        if (pokecard) pokecard.style.setProperty(`--r${d}`, `${(this.light_position[d] - 50) * 0.1}deg`);
       }
     });
 
