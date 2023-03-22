@@ -24,42 +24,36 @@ class Weakness extends Component {
     setMultipliers() {
         if (!this.props.species) return;
         let multipliers = getMultipliers(this.props.species.types).defense;
-        let structured = {};
-
+        let structured = [];
+    
         for (const [type, multiplier] of Object.entries(multipliers)) {
-            if (!structured[multiplier]) structured[multiplier] = [];
-            structured[multiplier].push(type);
+            if (multiplier !== 1) {
+                structured.push({
+                    type: type,
+                    multiplier: multiplier
+                });
+            }
         };
-        delete structured[1];
-        
-        console.log(CodeBook.sortObj(structured));
 
         this.setState((state, props) => {
             return {
-                weaknesses: CodeBook.sortObj(structured)
+                weaknesses: CodeBook.sortArrBy(structured, 'multiplier').reverse()
             };
         });
     }
 
     render() {
-        let { weaknesses } = this.state;
+        let { weaknesses } = this.state; 
 
         console.log(weaknesses);
 
         return (
             <div className="weaknesses">
-                { weaknesses.map((weakness) =>
-                    <div className="weakness" key={weakness.key}>
-                        <div className="effectivness">
-                            <span>{weakness.key}x</span>
-                        </div>
-                        <div className="types">
-                            { weakness.content.map((type) =>
-                                <Type unique={weakness} type={type} />
-                            )}
-                        </div>
-                    </div>
-                )}
+                <div className="types">
+                    { weaknesses.map((weakness) =>
+                            <Type unique={weakness.type} type={weakness.type} tag={'×' + weakness.multiplier} />
+                    )}
+                </div>
             </div>
         )
     }

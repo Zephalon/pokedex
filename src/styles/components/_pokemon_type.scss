@@ -1,27 +1,56 @@
 @use '../settings';
 
 .pokemon-type {
-    padding: 0.15em 0.5em 0.2em 0.5em;
-    margin-right: 0.5rem;
     display: block;
     float: left;
     border-radius: 0.25rem;
     background-color: settings.$color-dark;
     text-transform: uppercase;
-    font-family: settings.$font-family-pixelated;
     line-height: 1;
     border: 1px solid settings.$color-dark;
     color: settings.$color-dark;
+    min-width: 4em;
+    text-align: center;
+    display: flex;
+    justify-content: space-between;
+    height: 1.5em;
+
+    > div {
+        font-weight: bold;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        font-size: 0.7em;
+    }
+
+    .name {
+        padding: 0 0.5em;
+        flex-grow: 1;
+    }
+
+    .tag {
+        height: 100%;
+        color: #fff;
+        background-color: settings.$color-dark;
+        min-width: 2em;
+        padding: 0 .15em;
+    }
 
     @each $color-key, $color-value in settings.$type_colors {
         &[title="#{$color-key}"] {
             background-color: #{$color-value};
+            border-color: darken($color-value, 50%);
+            color: darken($color-value, 50%);
+
+            & .tag {
+                background-color: darken($color-value, 50%);
+            }
         }
     }
 
     @each $color-key in settings.$type_dark_colors {
         &[title="#{$color-key}"] {
-            color: settings.$color-light;
+            //color: settings.$color-light;
         }
     }
 }

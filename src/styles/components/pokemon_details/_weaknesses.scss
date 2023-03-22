@@ -1,36 +1,15 @@
 @use '../../settings';
 
 .weaknesses {
-    display: flex;
-    flex-direction: column;
     gap: 0.5rem;
     width: calc(100% - 3em);
     margin: 0 1.5em;
-    padding-bottom: 0.5em;
 
-    .weakness {
+    .types {
         display: flex;
+        flex-wrap: wrap;
+        gap: 0.25em 0.5em;
+        flex-grow: 1;
         flex-direction: row;
-        gap: 1em;
-
-        .effectivness {
-            width: 5rem;
-            background-color: settings.$color-dark;
-            border: 1px solid settings.$color-dark;
-            color: settings.$color-light;
-            border-radius: 0.25rem;
-            font-weight: bold;
-            display: flex;
-            align-items: center;
-            min-width: 6rem;
-            justify-content: center;
-        }
-    
-        .types {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.25em 0;
-            flex-grow: 1;
-        }
     }
 }

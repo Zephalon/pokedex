@@ -20,7 +20,7 @@ export default function getMultipliers(types) {
 
             // setup: everything to 1
             for (const [at_id, at_value] of Object.entries(all_types)) {
-                multipliers[attr_id][at_id] = 1;
+                if (multipliers[attr_id][at_id] === undefined) multipliers[attr_id][at_id] = 1;
             }
 
             // select severities
@@ -32,6 +32,8 @@ export default function getMultipliers(types) {
             };
         }
     });
+
+    console.log(multipliers);
 
     return multipliers;
 }

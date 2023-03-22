@@ -7,10 +7,16 @@ class Type extends Component {
         this.state = {};
     }
     render() {
-        let { unique, type } = this.props;
+        let { unique, type, tag } = this.props;
+        let el_tag;
+
+        if (tag) el_tag = <div className="tag"><span>{tag}</span></div>;
 
         return (
-            <span className="pokemon-type" key={'type-' + unique ? unique : Math.random() * 1000} title={type}>{type_lookup[type].name}</span>
+            <div className="pokemon-type" key={'type-' + unique ? unique : Math.random() * 1000} title={type}>
+                <div className="name"><span>{type_lookup[type].name}</span></div>
+                {el_tag}
+            </div>
         )
     }
 }
