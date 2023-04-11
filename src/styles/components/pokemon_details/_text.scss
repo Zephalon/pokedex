@@ -5,17 +5,29 @@
     font-size: 1.2em;
     font-weight: bold;
     line-height: 1.2;
+    text-shadow: 0 0 1px settings.$color-dark, 0 0 1px settings.$color-dark, 0 0 1px settings.$color-dark, 0 0 1px settings.$color-dark; 
 
     .pid {
-        background-color: settings.$color-dark;
         padding: 0 0.35em;
         text-align: center;
         color: settings.$color-light;
-        border-radius: 0.25em;
+        position: relative;
+
+        &:after {
+            content: "";
+            $inset: 0em;
+            position: absolute;
+            top: $inset + 0.1em;
+            bottom: $inset + 0.1em;
+            left: $inset;
+            right: $inset;
+            border-radius: 0.25em;
+            background-color: settings.$color-dark;
+            z-index: -1;
+        }
     }
 
     .flavor {
         color: settings.$color-light;
-        text-shadow: 0 0 1px settings.$color-dark, 0 0 1px settings.$color-dark, 0 0 1px settings.$color-dark, 0 0 1px settings.$color-dark; 
     }
 }

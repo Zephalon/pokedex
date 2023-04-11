@@ -32,15 +32,17 @@ class EvolutionItem extends Component {
 
         return (
             <div className={'evolution ' + (active ? 'active' : '')} onClick={this.open.bind(this)}>
-                <div className={'trigger ' + (trigger ? 'can-evolve' : 'no-evolution')}>
-                    <span>{trigger}</span>
-                </div>
-                <div className="icon">
-                    <img src={'pokemon_sprites/' + species.slug + '.png'} alt={'Icon ' + species.name} loading="lazy" />
-                    <div className={'icon-background type type-' + species.types.join('-')}></div>
-                </div>
-                <div className="name">
-                    <span>{species.name}</span>
+                <div className="evolution-inner">
+                    <div className={'trigger ' + (trigger ? 'can-evolve' : 'no-evolution')}>
+                        <span>{trigger}</span>
+                    </div>
+                    <div className="icon">
+                        <img src={'pokemon_sprites/' + species.slug + '.png'} alt={'Icon ' + species.name} loading="lazy" />
+                        <div className={'icon-background type type-' + species.types.join('-')}></div>
+                    </div>
+                    <div className="name">
+                        <span>{species.name}</span>
+                    </div>
                 </div>
             </div>
         )

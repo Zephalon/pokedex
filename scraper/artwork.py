@@ -40,7 +40,7 @@ for mid, monster in enumerate(pokemon_list):
     page = requests.get(TARGET + monster['original_url'])
     soup = BeautifulSoup(page.content, 'html.parser')
 
-    statistics = soup.find('table', {'class': 'right'})
+    statistics = soup.find('table', {'class': 'infobox-pokemon'})
 
     # get main artwork
     main_artwork = statistics.find_all('img')[1]

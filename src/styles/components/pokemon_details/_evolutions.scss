@@ -3,7 +3,7 @@
 .evolutions {
 
     &::-webkit-scrollbar {
-        height: 0.5em;
+        width: 1em;
     }
     
     &::-webkit-scrollbar-track {
@@ -15,25 +15,25 @@
     }
 
     text-align: center;
-    padding: 0.5em 0;
     background-color: settings.$color-dark;
-    overflow-y: hidden;
-    overflow-x: auto;
+    overflow-x: hidden;
+    overflow-y: auto;
     height: 8em;
     width: 100%;
     box-sizing: border-box;
     white-space: nowrap;
     color: settings.$color-light;
     background-image:  linear-gradient(135deg, rgba(#fff, 0.025) 25%, transparent 25%), linear-gradient(225deg, rgba(#fff, 0.025) 25%, transparent 25%), linear-gradient(45deg, rgba(#fff, 0.025) 25%, transparent 25%), linear-gradient(315deg, rgba(#fff, 0.025) 25%, settings.$color-dark 25%);
-    background-position:  10px 0, 10px 0, 0 0, 0 0;
+    background-position: 10px 0, 10px 0, 0 0, 0 0;
     background-size: 20px 20px;
     background-repeat: repeat;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1em 2em;
+    scroll-snap-type: y mandatory;
+    justify-content: center;
 
     &.loading, &.unknown {
-        justify-content: center;
-        display: flex;
-        align-items: center;
-
         > .warning {
             background-color: settings.$color-active;
             padding: 0.2em 0.5em;

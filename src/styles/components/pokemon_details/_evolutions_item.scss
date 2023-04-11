@@ -3,13 +3,24 @@
 .evolutions {
     .evolution {
         display: inline-block;
-        height: 6.75em;
+        height: 8em;
         margin: 0;
-        padding: 0 0.5em;
         position: relative;
-        margin: 0 0.5em;
-        cursor: pointer;
-        transition: all 0.25s ease-in-out;
+        scroll-snap-align: start;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        &-inner {
+            height: 6.5em;
+            position: relative;
+            cursor: pointer;
+            transition: all 0.25s ease-in-out;
+
+            @media (max-width: settings.$breakpoint) {
+                height: 5.8em;
+            }
+        }
 
         &.active {
             .icon-background {
@@ -58,6 +69,10 @@
             img {
                 position: relative;
                 z-index: 1;
+
+                @media (max-width: settings.$breakpoint) {
+                    max-height: 100%;
+                }
             }
 
             &-background {
@@ -84,8 +99,12 @@
             z-index: 2;
             pointer-events: none;
 
-            @media (max-width: 480px) {
-                bottom: -0.25em;
+            @media (max-height: 768px) {
+                justify-content: start;
+            }
+
+            @media (max-width: settings.$breakpoint) {
+                bottom: -0.25rem;
             }
 
             span {
